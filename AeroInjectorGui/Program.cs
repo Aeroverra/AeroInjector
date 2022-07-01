@@ -10,6 +10,7 @@ namespace Tech.Aerove.AeroInjector.Gui
     /// This gui is build with Blazor and Photino from this example repo
     ///https://github.com/tryphotino/photino.Blazor
     ///Eventually it would be nice to use Maui once Microsoft allows you to easily publish a self contained version
+    ///Build in Icons https://useiconic.com/open#icons
     /// </summary>
     class Program
     {
@@ -21,6 +22,8 @@ namespace Tech.Aerove.AeroInjector.Gui
             appBuilder.Services
                 .AddLogging();
 
+            appBuilder.Services.AddSingleton<ConfigService>();
+            
             // register root component and selector
             appBuilder.RootComponents.Add<App>("app");
 
@@ -28,9 +31,12 @@ namespace Tech.Aerove.AeroInjector.Gui
 
             // customize window
             app.MainWindow
+                .SetWidth(1200)
+                .SetHeight(600)
+                .SetUseOsDefaultSize(false)
                 .SetIconFile("favicon.ico")
-                .SetTitle("Photino Blazor Sample");
-
+                .SetTitle("AeroInjector");
+            
             AppDomain.CurrentDomain.UnhandledException += (sender, error) =>
             {
                 app.MainWindow.OpenAlertWindow("Fatal exception", error.ExceptionObject.ToString());
