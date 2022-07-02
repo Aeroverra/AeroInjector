@@ -1,27 +1,24 @@
 ﻿
-/*Sidebar */   
-body {
-    background-color: #fbfbfb;
+/*Sidebar */
+.sb-nav >  .list-group-item-action {
+    padding: 1rem 1.5rem;
+
 }
 
-main {
-    padding-left: 240px;
-}
-
-@media (min-width: 291.98px) {
-    main {
-        padding-left: 240px;
+    @media (min-width: 100.98px) {
+        main {
+            padding-left: 64px;
+        }
     }
-}
-
-/* Sidebar */
-.sidebar {
+    /* Sidebar */
+    .sidebar {
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
     z-index: 600;
+    width:64px;
 }
 
 @media (max-width: 291.98px) {
