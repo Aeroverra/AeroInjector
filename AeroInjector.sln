@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Photino.Blazor", "Photino.B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AeroInjectorGui2", "AeroInjectorGui2\AeroInjectorGui2.csproj", "{FBB82BBF-D7D5-4B91-AFC5-D071CCAF1C0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tech.Aerove.AeroInjector.Gui", "Tech.Aerove.AeroInjector.Gui\Tech.Aerove.AeroInjector.Gui.csproj", "{C1531166-5D39-46D9-9DB2-E7C317556224}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tech.Aerove.AeroInjector.Gui", "Tech.Aerove.AeroInjector.Gui\Tech.Aerove.AeroInjector.Gui.csproj", "{259049F9-750C-4C76-AEB1-692714F0AA4E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{FBB82BBF-D7D5-4B91-AFC5-D071CCAF1C0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBB82BBF-D7D5-4B91-AFC5-D071CCAF1C0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBB82BBF-D7D5-4B91-AFC5-D071CCAF1C0C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C1531166-5D39-46D9-9DB2-E7C317556224}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C1531166-5D39-46D9-9DB2-E7C317556224}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C1531166-5D39-46D9-9DB2-E7C317556224}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C1531166-5D39-46D9-9DB2-E7C317556224}.Release|Any CPU.Build.0 = Release|Any CPU
+		{259049F9-750C-4C76-AEB1-692714F0AA4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{259049F9-750C-4C76-AEB1-692714F0AA4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{259049F9-750C-4C76-AEB1-692714F0AA4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{259049F9-750C-4C76-AEB1-692714F0AA4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
