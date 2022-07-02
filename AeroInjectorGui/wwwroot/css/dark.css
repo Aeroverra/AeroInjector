@@ -1,3 +1,30 @@
-﻿body
-{
+﻿:root {
+    --darkColor: #f7f7f7;
+    --darkBackground: #292b2f;
+    --lightColor: #292b2c;
+    --lightBackground: #ccc;
 }
+body.dark #sidebarMenu {
+    background-color: var(--darkBackground) !important;
+}
+body.dark .list-group-item {
+    background-color: var(--darkBackground) !important;
+    color: rgb(150, 152, 157);
+}
+    body.dark .list-group-item.active {
+        color: white;
+        background-color: rgba(79, 84, 92, 0.6)!important;
+        border: 0px;
+        box-shadow: unset;
+    }
+.list-group-flush > .list-group-item{
+    border:0px;
+}
+body.dark {
+    background-color: #2f3136;
+    color:white;
+}
+    body.dark #blazor-error-ui {
+        background-color: var(--darkBackground);
+    }
+ 
