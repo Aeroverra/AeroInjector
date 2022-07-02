@@ -1,0 +1,18 @@
+﻿
+<div class="modal top fade" id="@Id" tabindex="-1" data-mdb-backdrop="true" data-mdb-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">@Title</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @ChildContent
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-blurp w-100" @onclick="ButtonPressed">@ButtonName</button>
+            </div>
+        </div>
+    </div>
+</div>
