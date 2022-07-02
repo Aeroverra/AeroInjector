@@ -1,4 +1,4 @@
-﻿namespace AeroInjector
+﻿namespace Tech.Aerove.AeroInjector
 {
     internal class Program
     {

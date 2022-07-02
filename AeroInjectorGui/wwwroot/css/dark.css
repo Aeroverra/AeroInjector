@@ -1,21 +1,26 @@
 ﻿:root {
-    --darkColor: #f7f7f7;
+    --blurp: #7289da;
+    --blurp2: #5578f4;
     --darkBackground: #292b2f;
-    --lightColor: #292b2c;
-    --lightBackground: #ccc;
+    --darkSelected: #3f434a;
+    --darkOffWhite: rgb(150, 152, 157);
+
 }
 body.dark #sidebarMenu {
     background-color: var(--darkBackground) !important;
 }
 body.dark .list-group-item {
     background-color: var(--darkBackground) !important;
-    color: rgb(150, 152, 157);
+    color: var(--darkOffWhite)
 }
     body.dark .list-group-item.active {
         color: white;
-        background-color: rgba(79, 84, 92, 0.6)!important;
+        background-color: var(--darkSelected) !important;
         border: 0px;
         box-shadow: unset;
+    }
+    body.dark .list-group-item:hover {
+        background-color: var(--darkSelected) !important;
     }
 .list-group-flush > .list-group-item{
     border:0px;
@@ -27,4 +32,70 @@ body.dark {
     body.dark #blazor-error-ui {
         background-color: var(--darkBackground);
     }
- 
+
+body.dark .modal-content {
+    background-color: var(--darkBackground);
+    color: white;
+}
+    body.dark .modal-header {
+    border-bottom-color: var(--darkSelected);
+    }
+    body.dark .modal-footer {
+        border-top-color: var(--darkSelected);
+    }
+.btn-blurp {
+    background-color: var(--blurp);
+    color:white;
+}
+.btn-blurp:hover {
+    background-color: var(--blurp2);
+    color: white;
+}
+body.dark .btn-close {
+    color: var(--darkOffWhite);
+}
+    body.dark .btn-close:hover {
+        color: white;
+    }
+body.dark .form-outline .form-control:focus ~ .form-label {
+    color: white;
+}
+body.dark .form-control,.form-outline .form-control~.form-label  {
+    color: var(--darkOffWhite);
+}
+body.dark .form-control {
+    background-color: var(--darkSelected);
+}
+    body.dark .form-control:focus {
+        border-color: var(--darkOffWhite);
+    }
+
+body.dark .form-label {
+    color: var(--darkOffWhite) !important;
+}
+body.dark .form-control:focus {
+    box-shadow: inset 0 0 0 1px var(--darkOffWhite);
+    
+}
+body.dark input[type=file]::file-selector-button {
+    color: white;
+    background-color: var(--blurp) !important;
+    border:none;
+}
+body.dark input[type=file]::file-selector-button:hover {
+    color: white;
+    background-color: var(--blurp2) !important;
+    border: none;
+}
+body.dark input{
+    border:none;
+}
+.modal-header{
+    padding-bottom:5px;
+}
+body.dark .text-light{
+    color: var(--darkOffWhite) !important;
+}
+body.dark .text-light:hover {
+    color: white !important;
+}

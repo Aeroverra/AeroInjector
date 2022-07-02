@@ -1,6 +1,49 @@
 ﻿@page "/applications"
-<h3>Applications</h3>
+<h6>Applications</h6>
 
-@code {
+<div class="text-center text-light" data-mdb-toggle="modal" data-mdb-target="#exampleModal" id="add-app">
+    Add Application
+</div>
+<div class="row row-app">
+    @foreach (var item in ConfigService.GetApplications())
+    {
+        <div class="col col-12">
+            <div class="item d-flex align-items-center">
+                <div class="image">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="..." class="img-fluid rounded-circle">
+                </div>
+                <div class="text">
+                    <h3 class="h5">Lorem Ipsum Dolor</h3>
+                    <small>Posted on 5th June 2017 by Aria Smith. </small>
+                </div>
+            </div>
+        </div>
 
-}
+    }
+</div>
+
+<!-- Modal -->
+<div class="modal top fade" id="exampleModal" tabindex="-1" data-mdb-backdrop="true" data-mdb-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add an application</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label" for="add-app-name">Application Name</label>
+                    <input type="text" id="add-app-name" class="form-control" />
+                </div>
+                <div class="form-group mt-2">
+                    <label class="form-label" for="add-app-name">Application Path</label>
+                    <input type="file" class="form-control" id="add-app-file" />
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-blurp w-100">Add</button>
+            </div>
+        </div>
+    </div>
+</div>

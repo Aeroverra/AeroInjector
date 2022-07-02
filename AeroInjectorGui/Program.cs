@@ -2,6 +2,7 @@
 using System.Net.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Photino.Blazor;
+using Tech.Aerove.AeroInjector.Gui.Services;
 
 namespace Tech.Aerove.AeroInjector.Gui
 {

@@ -1,0 +1,32 @@
+﻿.item .image {
+    min-width: 50px;
+    max-width: 50px;
+    height: 50px;
+    margin-right: 15px;
+}
+
+.item {
+  
+}
+.row-app  {
+    margin: 10px;
+}
+.row-app > .col {
+    background-color: var(--darkBackground);
+    border-radius:20px;
+}
+    .row-app > .col:hover {
+        background-color: var(--darkSelected) !important;
+        cursor: pointer;
+    }
+.row-app .item {
+    padding: 10px;
+
+}
+.modal-header, .modal-footer {
+    border: none
+}
+
+#add-app:hover {
+    cursor: pointer;
+}
