@@ -22,7 +22,6 @@ namespace Tech.Aerove.AeroInjector.Gui
 
             appBuilder.Services
                 .AddLogging();
-
             appBuilder.Services.AddSingleton<ConfigService>();
             
             // register root component and selector
@@ -36,7 +35,8 @@ namespace Tech.Aerove.AeroInjector.Gui
                 .SetHeight(600)
                 .SetUseOsDefaultSize(false)
                 .SetIconFile("favicon.ico")
-                .SetTitle("AeroInjector");
+                .SetTitle("AeroInjector")
+                .SetGrantBrowserPermissions(true);
             
             AppDomain.CurrentDomain.UnhandledException += (sender, error) =>
             {

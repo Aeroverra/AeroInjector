@@ -8,6 +8,7 @@ using Tech.Aerove.AeroInjector.Gui;
 using Microsoft.AspNetCore.Components;
 using Tech.Aerove.AeroInjector.Gui.Services;
 using Tech.Aerove.AeroInjector.Gui.Models;
+using Microsoft.Win32;
 
 namespace Tech.Aerove.AeroInjector.Gui.Pages
 {
@@ -16,11 +17,18 @@ namespace Tech.Aerove.AeroInjector.Gui.Pages
         [Inject] public ConfigService ConfigService { get; set; }
         public Application ApplicationNew { get; set; } = new Application();
         
+        public void PickApplication()
+        {
+
+
+        }
+
         public async Task AddApplication()
         {
             await ConfigService.AddApplication(ApplicationNew);
             ApplicationNew = new Application();
         }
+        
 
     }
 }
