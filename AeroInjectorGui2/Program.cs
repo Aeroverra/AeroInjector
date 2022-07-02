@@ -20,8 +20,7 @@ namespace Tech.Aerove.AeroInjector.Gui
         {
             var appBuilder = PhotinoBlazorAppBuilder.CreateDefault(args);
 
-            appBuilder.Services
-                .AddLogging();
+            appBuilder.Services.AddLogging();
             appBuilder.Services.AddSingleton<ConfigService>();
             
             // register root component and selector

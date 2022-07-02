@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AeroInjector", "AeroInjecto
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Photino.Blazor", "Photino.Blazor\Photino.Blazor.csproj", "{AB20A472-7C6C-41E7-9A4F-379CA3AAD8C1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AeroInjectorGui", "AeroInjectorGui2\AeroInjectorGui.csproj", "{FBB82BBF-D7D5-4B91-AFC5-D071CCAF1C0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AeroInjectorGui2", "AeroInjectorGui2\AeroInjectorGui2.csproj", "{FBB82BBF-D7D5-4B91-AFC5-D071CCAF1C0C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tech.Aerove.AeroInjector.Gui", "Tech.Aerove.AeroInjector.Gui\Tech.Aerove.AeroInjector.Gui.csproj", "{C1531166-5D39-46D9-9DB2-E7C317556224}"
 EndProject
