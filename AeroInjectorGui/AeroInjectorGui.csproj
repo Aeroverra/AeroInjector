@@ -29,4 +29,8 @@
 	  </None>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="wwwroot\MDBootstrap5\" />
+	</ItemGroup>
+
 </Project>
