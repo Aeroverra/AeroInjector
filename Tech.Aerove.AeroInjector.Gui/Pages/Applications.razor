@@ -8,11 +8,11 @@
 <Tech.Aerove.AeroInjector.Gui.Components.DarkModal Id="addModal" Title="Add an application" ButtonName="Add" ButtonPressed="AddApplication">
     <div class="form-group">
         <label class="form-label">Application Name</label>
-        <input type="text" class="form-control" @bind="ApplicationNew.Name"/>
+        <input type="text" class="form-control" @bind="ApplicationNew.Name" />
     </div>
     <div class="form-group mt-2">
         <label class="form-label">Application Path</label>
-        <input type="file" class="form-control" @bind="ApplicationNew.Path" />
+        <input type="text" class="form-control" style="cursor:pointer;" id="app-file-pick" value="@ApplicationNew.Path" @onclick="PickApplication" />
     </div>
 </Tech.Aerove.AeroInjector.Gui.Components.DarkModal>
 <Tech.Aerove.AeroInjector.Gui.Components.FileItemView>

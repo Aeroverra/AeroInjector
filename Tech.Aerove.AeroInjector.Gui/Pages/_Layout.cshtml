@@ -8,12 +8,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="~/" />
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
-    <link href="css/site.css" rel="stylesheet" />
+    <link href="css/open-iconic/font/css/open-iconic-bootstrap.min.css" rel="stylesheet" />
+    <link href="mdbootstrap5/css/mdb.min.css" rel="stylesheet" />
+    <link href="css/dark.css" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
     <link href="Tech.Aerove.AeroInjector.Gui.styles.css" rel="stylesheet" />
     <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
 </head>
-<body>
+<body class="dark">
     @RenderBody()
 
     <div id="blazor-error-ui">
@@ -28,5 +30,8 @@
     </div>
 
     <script src="_framework/blazor.server.js"></script>
+    <script src="mdbootstrap5/js/mdb.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
