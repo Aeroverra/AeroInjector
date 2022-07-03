@@ -10,7 +10,11 @@
                 @ChildContent
             </div>
             <div class="modal-footer">
-
+                @if(Button2Name!= null)
+                {
+                    <button type="button" class="btn btn-danger w-100" @onclick="Button2Pressed">@Button2Name</button>
+                }
+     
                 <button type="button" class="btn btn-blurp w-100" @onclick="ButtonPressed">@ButtonName</button>
             </div>
         </div>

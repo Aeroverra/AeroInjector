@@ -18,6 +18,8 @@ namespace Tech.Aerove.AeroInjector.Gui.Components
         [Parameter] public string Id { get; set; }
         [Parameter] public string Title { get; set; }
         [Parameter] public string ButtonName { get; set; }
+        [Parameter] public string Button2Name { get; set; }
         [Parameter] public Func<Task> ButtonPressed { get; set; }
+        [Parameter] public Func<Task> Button2Pressed { get; set; }
     }
 }

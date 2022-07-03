@@ -18,7 +18,7 @@
 <Tech.Aerove.AeroInjector.Gui.Components.FileItemView>
     @foreach (var item in ConfigService.GetApplications())
     {
-        <Tech.Aerove.AeroInjector.Gui.Components.FileItem Name="@item.Name" Description="@item.Path" Image="@item.Image" />
+        <Tech.Aerove.AeroInjector.Gui.Components.FileItem Application="item" />
     }
 </Tech.Aerove.AeroInjector.Gui.Components.FileItemView>
 

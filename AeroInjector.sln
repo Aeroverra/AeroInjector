@@ -5,11 +5,9 @@ VisualStudioVersion = 17.3.32611.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AeroInjector", "AeroInjector\AeroInjector.csproj", "{5F98FCA3-BE96-4FD9-B3EB-226A6E02CB2F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Photino.Blazor", "Photino.Blazor\Photino.Blazor.csproj", "{AB20A472-7C6C-41E7-9A4F-379CA3AAD8C1}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AeroInjectorGui2", "AeroInjectorGui2\AeroInjectorGui2.csproj", "{FBB82BBF-D7D5-4B91-AFC5-D071CCAF1C0C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tech.Aerove.AeroInjector.Gui", "Tech.Aerove.AeroInjector.Gui\Tech.Aerove.AeroInjector.Gui.csproj", "{84CB9C9C-0D94-4CBB-AC96-1013FA0FFCA5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tech.Aerove.Lib.Public", "..\Tech.Aerove.Lib.Public\Tech.Aerove.Lib.Public.csproj", "{5C608326-8363-4A49-B6AA-B2C98F05F2DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,18 +19,14 @@ Global
 		{5F98FCA3-BE96-4FD9-B3EB-226A6E02CB2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F98FCA3-BE96-4FD9-B3EB-226A6E02CB2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F98FCA3-BE96-4FD9-B3EB-226A6E02CB2F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AB20A472-7C6C-41E7-9A4F-379CA3AAD8C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AB20A472-7C6C-41E7-9A4F-379CA3AAD8C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AB20A472-7C6C-41E7-9A4F-379CA3AAD8C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AB20A472-7C6C-41E7-9A4F-379CA3AAD8C1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FBB82BBF-D7D5-4B91-AFC5-D071CCAF1C0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FBB82BBF-D7D5-4B91-AFC5-D071CCAF1C0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FBB82BBF-D7D5-4B91-AFC5-D071CCAF1C0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FBB82BBF-D7D5-4B91-AFC5-D071CCAF1C0C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{84CB9C9C-0D94-4CBB-AC96-1013FA0FFCA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{84CB9C9C-0D94-4CBB-AC96-1013FA0FFCA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84CB9C9C-0D94-4CBB-AC96-1013FA0FFCA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84CB9C9C-0D94-4CBB-AC96-1013FA0FFCA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C608326-8363-4A49-B6AA-B2C98F05F2DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C608326-8363-4A49-B6AA-B2C98F05F2DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C608326-8363-4A49-B6AA-B2C98F05F2DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C608326-8363-4A49-B6AA-B2C98F05F2DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

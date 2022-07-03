@@ -1,5 +1,24 @@
 ﻿@page "/dlls"
+<h6>DLL's</h6>
 
-@code {
 
-}
+<div class="text-center text-light" data-mdb-toggle="modal" data-mdb-target="#addModal" id="add-app">
+    Add DLL
+</div>
+<Tech.Aerove.AeroInjector.Gui.Components.DarkModal Id="addModal" Title="Add an application" ButtonName="Add" ButtonPressed="AddApplication">
+    <div class="form-group">
+        <label class="form-label">Application Name</label>
+        <input type="text" class="form-control" @bind="ApplicationNew.Name" />
+    </div>
+    <div class="form-group mt-2">
+        <label class="form-label">Application Path</label>
+        <input type="text" class="form-control" style="cursor:pointer;" id="app-file-pick" value="@ApplicationNew.Path" @onclick="PickApplication" />
+    </div>
+</Tech.Aerove.AeroInjector.Gui.Components.DarkModal>
+<Tech.Aerove.AeroInjector.Gui.Components.FileItemView>
+    @foreach (var item in ConfigService.GetDlls())
+    {
+        <Tech.Aerove.AeroInjector.Gui.Components.FileItem Application="item" />
+    }
+</Tech.Aerove.AeroInjector.Gui.Components.FileItemView>
+

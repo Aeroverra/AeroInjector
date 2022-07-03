@@ -1,19 +1,28 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
+using System.Net.Http;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.AspNetCore.Components.Routing;
+using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Components.Web.Virtualization;
+using Microsoft.JSInterop;
+using Tech.Aerove.AeroInjector.Gui;
+using Tech.Aerove.AeroInjector.Gui.Shared;
 using Tech.Aerove.AeroInjector.Gui.Services;
 using Tech.Aerove.AeroInjector.Gui.Models;
-using Microsoft.JSInterop;
 
 namespace Tech.Aerove.AeroInjector.Gui.Pages
 {
-
-    public partial class Applications
+    public partial class DLLs
     {
         [Inject] public ConfigService ConfigService { get; set; }
         [Inject] public IJSRuntime JS { get; set; }
-        public Application ApplicationNew { get; set; } = new Application();
-
-
-
+        public Application ApplicationNew { get; set; } = new Application { IsInjectee = true};
 
         public async Task PickApplication()
         {
@@ -25,11 +34,11 @@ namespace Tech.Aerove.AeroInjector.Gui.Pages
                 ApplicationNew.Path = openFileDialog.FileName;
             });
             thread.SetApartmentState(ApartmentState.STA);
-     
+
             thread.Start();
             while (true)
             {
-                if(thread.ThreadState == ThreadState.Running)
+                if (thread.ThreadState == ThreadState.Running)
                 {
                     await Task.Delay(250);
                     continue;
@@ -44,7 +53,6 @@ namespace Tech.Aerove.AeroInjector.Gui.Pages
             ApplicationNew = new Application();
             await JS.InvokeVoidAsync("closeModal", "addModal");
         }
-
 
     }
 }
