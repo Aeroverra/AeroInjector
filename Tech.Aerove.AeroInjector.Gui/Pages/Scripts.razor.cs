@@ -18,16 +18,35 @@ using Tech.Aerove.AeroInjector.Gui.Models;
 
 namespace Tech.Aerove.AeroInjector.Gui.Pages
 {
-    public partial class Scripts
+    public partial class Scripts : IDisposable
     {
         [Inject] public ConfigService ConfigService { get; set; }
         [Inject] public IJSRuntime JS { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; }
         public Script? Selected { get; set; }
         public Script NewScript { get; set; } = new Script();
 
+        protected override void OnAfterRender(bool firstRender)
+        {
+            if (firstRender)
+            {
+                if (ConfigService.GetScripts().Any(x => x.IsLastModified))
+                {
+                    Selected = ConfigService.GetScripts().FirstOrDefault(x => x.IsLastModified);
+                }
+                NavigationManager.LocationChanged += OnLeavePage;
+                StateHasChanged();
+            }
+    
+        }
+
+        private void OnLeavePage(object? sender, LocationChangedEventArgs args)
+        {
+            _= ConfigService.SaveScript(Selected);
+        }
         public async Task OnSave()
         {
-            await ConfigService.SaveScript(Selected);
+     
         }
         public async Task OnDelete()
         {
@@ -54,6 +73,11 @@ namespace Tech.Aerove.AeroInjector.Gui.Pages
             }
 
             Selected = ConfigService.GetScripts().FirstOrDefault(x => x.Id == id);
+        }
+
+        public void Dispose()
+        {
+            NavigationManager.LocationChanged -= OnLeavePage;
         }
     }
 }

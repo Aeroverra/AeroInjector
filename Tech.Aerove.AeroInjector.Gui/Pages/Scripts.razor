@@ -5,7 +5,7 @@
         <div class="col">
             <select class="form-select" value="@Selected?.Id" @onchange="OnScriptChange">
                 <option value="@Guid.Empty">Select Script</option>
-                <option value="@NewScript.Id">New Script</option>
+                <option value="@NewScript.Id" style="color:var(--neonGreen);">New Script</option>
                 @foreach (var script in ConfigService.GetScripts())
                 {
                     <option value="@script.Id">@script.Name</option>

@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tech.Aerove.AeroInjector.Scripting
+namespace Tech.Aerove.AeroInjector.Scripting.Commands
 {
-    public interface ScriptCommand
+    public interface IScriptCommand
     {
-
-        public List<object> Arguments { get; set; }
+        public List<string> Arguments { get; set; }
+        public Dictionary<string, string> Variables { get; set; }
 
         public void Execute();
 

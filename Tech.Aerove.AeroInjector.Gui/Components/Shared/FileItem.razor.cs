@@ -11,7 +11,7 @@ using Tech.Aerove.AeroInjector.Gui.Models;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.JSInterop;
 
-namespace Tech.Aerove.AeroInjector.Gui.Components
+namespace Tech.Aerove.AeroInjector.Gui.Components.Shared
 {
 
 

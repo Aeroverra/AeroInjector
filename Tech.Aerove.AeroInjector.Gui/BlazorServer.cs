@@ -1,5 +1,4 @@
 ﻿using System.Reflection.PortableExecutable;
-using Tech.Aerove.AeroInjector.Gui.Data;
 using Tech.Aerove.AeroInjector.Gui.Services;
 
 namespace Tech.Aerove.AeroInjector.Gui
@@ -19,7 +18,6 @@ namespace Tech.Aerove.AeroInjector.Gui
             // Add services to the container.
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
-            builder.Services.AddSingleton<WeatherForecastService>();
             builder.Services.AddSingleton<ConfigService>();
 
             var app = builder.Build();

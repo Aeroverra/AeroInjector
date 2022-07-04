@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Components.Routing;
 using Microsoft.Extensions.Logging;
 using Tech.Aerove.AeroInjector.Gui;
 
-namespace Tech.Aerove.AeroInjector.Gui.Components
+namespace Tech.Aerove.AeroInjector.Gui.Components.Shared
 {
     
     public partial class FileItemView

@@ -4,7 +4,6 @@ using PhotinoNET;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using Tech.Aerove.AeroInjector.Gui.Data;
 
 namespace Tech.Aerove.AeroInjector.Gui
 {

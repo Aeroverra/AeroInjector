@@ -94,7 +94,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Components\" />
+    <Folder Include="Components\Scripts\" />
     <Folder Include="wwwroot\js\" />
   </ItemGroup>
 
