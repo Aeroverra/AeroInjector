@@ -8,6 +8,13 @@ using Tech.Aerove.AeroInjector.Gui.Data;
 
 namespace Tech.Aerove.AeroInjector.Gui
 {
+    /// <summary>
+    /// This gui is build with Blazor and Photino from this example repo
+    /// https://github.com/tryphotino/photino.Blazor
+    /// This is now its own version running on Blazor Server because the example repo had too many issues
+    /// Eventually it would be nice to use Maui once Microsoft allows you to easily publish a self contained version
+    /// Build in Icons https://useiconic.com/open#icons
+    /// </summary>
     public class Program
     {
         [STAThread]

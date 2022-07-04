@@ -12,3 +12,8 @@ function openModal(id) {
         modal.show();
     }
 }
+
+function focusElement(id) {
+    const element = document.getElementById(id);
+    element.focus();
+}

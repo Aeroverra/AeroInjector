@@ -1,0 +1,57 @@
+﻿@page "/Scripts"
+<div class="row">
+    <div class="col-2"><h6>Scripts</h6> </div>
+    <div class="col-8 text-center row">
+        <div class="col">
+            <select class="form-select" value="@Selected?.Id" @onchange="OnScriptChange">
+                <option value="@Guid.Empty">Select Script</option>
+                <option value="@NewScript.Id">New Script</option>
+                @foreach (var script in ConfigService.GetScripts())
+                {
+                    <option value="@script.Id">@script.Name</option>
+                }
+            </select>
+        </div>
+
+        @if (Selected != null)
+        {
+            <div class="col">
+                <div class="input-group">
+
+                    <button class="btn btn-outline-danger" data-mdb-toggle="modal"  data-mdb-target="#deleteModal" style="padding-left:11px;padding-right:11px;">
+                        <span class="oi oi-trash"></span>
+                    </button>
+
+                    <input type="text" id="scriptName" class="form-control h-100" @bind="Selected.Name" placeholder="Script Name" />
+                </div>
+
+            </div>
+        }
+
+
+    </div>
+    <div class="col-2 text-end"> <button class="btn btn-blurp" @onclick="OnSave" disabled="@(Selected==null)">Save</button></div>
+</div>
+
+<div id="scripts-container">
+    <div class="row h-100  pt-2">
+        <div class="col-6">
+        </div>
+        <div class="col-6">
+            @if(Selected != null)
+            {
+                <textarea class="w-100 h-100 flex-grow-1" @bind="Selected.Content" spellcheck="false"></textarea>
+            }
+            else
+            {
+                <textarea class="w-100 h-100 flex-grow-1" disabled="disabled"></textarea>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+<Tech.Aerove.AeroInjector.Gui.Components.DarkModal Id="deleteModal" Title="Delete Script" ButtonName="Delete" ButtonPressed="OnDelete">
+    <p style="color:var(--darkOffWhite)">Delete Script "@Selected?.Name"?</p>
+</Tech.Aerove.AeroInjector.Gui.Components.DarkModal>

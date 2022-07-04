@@ -4,7 +4,7 @@
     --darkBackground: #292b2f;
     --darkSelected: #3f434a;
     --darkOffWhite: rgb(150, 152, 157);
-
+    --neonGreen: #27cba8;
 }
 body.dark #sidebarMenu {
     background-color: var(--darkBackground) !important;
@@ -73,9 +73,8 @@ body.dark .form-control {
 body.dark .form-label {
     color: var(--darkOffWhite) !important;
 }
-body.dark .form-control:focus {
+body.dark .form-control:focus, body.dark select:focus {
     box-shadow: inset 0 0 0 1px var(--darkOffWhite);
-    
 }
 body.dark input[type=file]::file-selector-button {
     color: white;
@@ -87,8 +86,8 @@ body.dark input[type=file]::file-selector-button:hover {
     background-color: var(--blurp2) !important;
     border: none;
 }
-body.dark input{
-    border:none;
+body.dark input, body.dark select {
+    border: none;
 }
 .modal-header{
     padding-bottom:5px;
@@ -98,4 +97,8 @@ body.dark .text-light{
 }
 body.dark .text-light:hover {
     color: white !important;
+}
+body.dark select {
+    background-color: var(--darkBackground);
+    color: var(--darkOffWhite);
 }

@@ -1,0 +1,9 @@
+﻿#scripts-container {
+    height: calc(100vh - 65px);
+}
+textarea {
+    background-color: var(--darkBackground);
+    color: var(--blurp);
+    font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+    font-size: 1.2em
+}

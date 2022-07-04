@@ -9,5 +9,6 @@ namespace Tech.Aerove.AeroInjector.Gui.Models
     public class Settings
     {
         public List<Application> Applications = new List<Application>();
+        public List<Script> Scripts = new List<Script>();
     }
 }

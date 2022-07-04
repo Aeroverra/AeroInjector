@@ -17,10 +17,10 @@ namespace Tech.Aerove.AeroInjector.Gui.Services
         public static string StoragePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AeroInjector");
 
         public Settings Settings = null;
-    
+
         private void LoadSettings()
         {
-            if(Settings != null)
+            if (Settings != null)
             {
                 return;
             }
@@ -31,7 +31,7 @@ namespace Tech.Aerove.AeroInjector.Gui.Services
                 Settings = JsonConvert.DeserializeObject<Settings>(jsonSettings);
             }
         }
-   
+
         private async Task SaveSettings()
         {
             FileInfo fileInfo = new FileInfo(Path.Combine(StoragePath, "settings.json"));
@@ -39,12 +39,12 @@ namespace Tech.Aerove.AeroInjector.Gui.Services
             var jsonSettings = JsonConvert.SerializeObject(Settings);
             await File.WriteAllTextAsync(fileInfo.FullName, jsonSettings);
         }
-   
- 
+
+
         public List<Application> GetApplications()
         {
             LoadSettings();
-            return Settings.Applications.Where(x=>!x.IsInjectee).ToList();
+            return Settings.Applications.Where(x => !x.IsInjectee).ToList();
         }
         public List<Application> GetDlls()
         {
@@ -68,5 +68,28 @@ namespace Tech.Aerove.AeroInjector.Gui.Services
             Settings.Applications.Remove(applicationNew);
             await SaveSettings();
         }
+
+        public List<Script> GetScripts()
+        {
+            LoadSettings();
+            return Settings.Scripts;
+        }
+
+        public async Task SaveScript(Script script)
+        {
+            Settings.Scripts.ForEach(x => x.IsLastModified = false);
+            script.IsLastModified = true;
+            if (!Settings.Scripts.Contains(script))
+            {
+                Settings.Scripts.Add(script);
+            }
+            await SaveSettings();
+        }
+        public async Task RemoveScript(Script script)
+        {
+            Settings.Scripts.Remove(script);
+            await SaveSettings();
+        }
+
     }
 }
