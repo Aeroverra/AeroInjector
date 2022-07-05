@@ -4,9 +4,14 @@
     {
         static void Main(string[] args)
         {
-            switch (args[0])
+            var mode = args[0];
+            var value = args[1];
+            switch (mode)
             {
-                case "config":
+                case "script":
+
+                    break;
+                case "scriptpath":
 
                     break;
             }

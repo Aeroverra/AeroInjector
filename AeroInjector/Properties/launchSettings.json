@@ -1,8 +1,8 @@
 {
   "profiles": {
-    "WSL": {
-      "commandName": "WSL2",
-      "distributionName": ""
+    "AeroInjector": {
+      "commandName": "Project",
+      "commandLineArgs": "-tes f --tg f2"
     }
   }
 }
