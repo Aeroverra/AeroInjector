@@ -9,12 +9,13 @@ namespace Tech.Aerove.AeroInjector.Scripting.Commands
 {
     /// <summary>
     /// Finds a running process id be exe name and sets the processid var
-    /// [FindApp] {exename}
+    /// [FindApp] {Executable Name}
     /// </summary>
     [ScriptName("FindApp")]
+    [ScriptArg("Executable","Finds executable with specified name and sets the processid variable.")]
     public class FindAppCommand : IScriptCommand
     {
-        public List<string> Arguments { get; set; }
+        public List<KeyValuePair<string, string>> Arguments { get; set; }
         public Dictionary<string, string> Variables { get; set; }
 
 
@@ -23,5 +24,7 @@ namespace Tech.Aerove.AeroInjector.Scripting.Commands
 
             throw new NotImplementedException();
         }
+
+       
     }
 }

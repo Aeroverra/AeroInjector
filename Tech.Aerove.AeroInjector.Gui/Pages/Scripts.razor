@@ -18,7 +18,7 @@
             <div class="col">
                 <div class="input-group">
 
-                    <button class="btn btn-outline-danger" data-mdb-toggle="modal"  data-mdb-target="#deleteModal" style="padding-left:11px;padding-right:11px;">
+                    <button class="btn btn-outline-danger" data-mdb-toggle="modal" data-mdb-target="#deleteModal" style="padding-left:11px;padding-right:11px;">
                         <span class="oi oi-trash"></span>
                     </button>
 
@@ -36,9 +36,13 @@
 <div id="scripts-container">
     <div class="row h-100  pt-2">
         <div class="col-6">
+            @if (Selected != null)
+            {
+                <Tech.Aerove.AeroInjector.Gui.Components.Scripts.VisualBuilder Script="Selected" Update="UpdateUI" />
+            }
         </div>
         <div class="col-6">
-            @if(Selected != null)
+            @if (Selected != null)
             {
                 <textarea class="w-100 h-100 flex-grow-1" @bind="Selected.Content" spellcheck="false"></textarea>
             }
@@ -52,6 +56,6 @@
 
 
 
-<Tech.Aerove.AeroInjector.Gui.Components.DarkModal Id="deleteModal" Title="Delete Script" ButtonName="Delete" ButtonPressed="OnDelete">
+<Tech.Aerove.AeroInjector.Gui.Components.Shared.DarkModal Id="deleteModal" Title="Delete Script" ButtonName="Delete" ButtonPressed="OnDelete">
     <p style="color:var(--darkOffWhite)">Delete Script "@Selected?.Name"?</p>
-</Tech.Aerove.AeroInjector.Gui.Components.DarkModal>
+</Tech.Aerove.AeroInjector.Gui.Components.Shared.DarkModal>

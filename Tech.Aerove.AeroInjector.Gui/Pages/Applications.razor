@@ -5,7 +5,7 @@
 <div class="text-center text-light" data-mdb-toggle="modal" data-mdb-target="#addModal" id="add-app">
     Add Application
 </div>
-<Tech.Aerove.AeroInjector.Gui.Components.DarkModal Id="addModal" Title="Add an application" ButtonName="Add" ButtonPressed="AddApplication">
+<Tech.Aerove.AeroInjector.Gui.Components.Shared.DarkModal Id="addModal" Title="Add an application" ButtonName="Add" ButtonPressed="AddApplication">
     <div class="form-group">
         <label class="form-label">Application Name</label>
         <input type="text" class="form-control" @bind="ApplicationNew.Name" />
@@ -14,11 +14,11 @@
         <label class="form-label">Application Path</label>
         <input type="text" class="form-control" style="cursor:pointer;" id="app-file-pick" value="@ApplicationNew.Path" @onclick="PickApplication" />
     </div>
-</Tech.Aerove.AeroInjector.Gui.Components.DarkModal>
-<Tech.Aerove.AeroInjector.Gui.Components.FileItemView>
+</Tech.Aerove.AeroInjector.Gui.Components.Shared.DarkModal>
+<Tech.Aerove.AeroInjector.Gui.Components.Shared.FileItemView>
     @foreach (var item in ConfigService.GetApplications())
     {
-        <Tech.Aerove.AeroInjector.Gui.Components.FileItem Application="item" />
+        <Tech.Aerove.AeroInjector.Gui.Components.Shared.FileItem Application="item" />
     }
-</Tech.Aerove.AeroInjector.Gui.Components.FileItemView>
+</Tech.Aerove.AeroInjector.Gui.Components.Shared.FileItemView>
 

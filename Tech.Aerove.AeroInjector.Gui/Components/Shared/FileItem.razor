@@ -14,7 +14,7 @@
     </div>
 </div>
 
-<Tech.Aerove.AeroInjector.Gui.Components.DarkModal Id="@ModalId" Title="Edit Application" ButtonName="Save" ButtonPressed="UpdateApplication" Button2Name="Remove" Button2Pressed="DeleteApplication">
+<Tech.Aerove.AeroInjector.Gui.Components.Shared.DarkModal Id="@ModalId" Title="Edit Application" ButtonName="Save" ButtonPressed="UpdateApplication" Button2Name="Remove" Button2Pressed="DeleteApplication">
     <div class="form-group">
         <label class="form-label">Application Name</label>
         <input type="text" class="form-control" @bind="Application.Name" />
@@ -23,4 +23,4 @@
         <label class="form-label">Application Path</label>
         <input type="text" class="form-control" style="cursor:pointer;" id="app-file-pick" value="@Application.Path" @onclick="PickApplication" />
     </div>
-</Tech.Aerove.AeroInjector.Gui.Components.DarkModal>
+</Tech.Aerove.AeroInjector.Gui.Components.Shared.DarkModal>

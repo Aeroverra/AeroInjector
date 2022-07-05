@@ -10,21 +10,25 @@ namespace Tech.Aerove.AeroInjector.Scripting.Commands
 
     /// <summary>
     /// Injects a dll into the process set to the processid var and launches it with remote thread execution
-    /// [Inject] {dllpath} {params}
+    /// [Inject] {DLL Path} {args...}
     /// </summary>
     [ScriptName("Inject")]
-    internal class InjectCommand : IScriptCommand
+    [ScriptArg("Path", "Specifies the path to the DLL you want to Inject")]
+    [ScriptArg("Args", "Specifies the arguments you want to pass to the dll on injection.")]
+    public class InjectCommand : IScriptCommand
     {
-        public List<string> Arguments { get; set; }
+        public List<KeyValuePair<string, string>> Arguments { get; set; }
         public Dictionary<string, string> Variables { get; set; }
+
 
         public void Execute()
         {
             var processId = Variables["processid"];
-            var dllPath = Arguments[0];
-            var args = String.Join(" ", Arguments.Skip(1).ToList());
+            var dllPath = Arguments.First(x => x.Key.ToLower() == "path").Value;
+            var args = Arguments.First(x => x.Key.ToLower() == "args").Value;
             throw new NotImplementedException();
         }
 
+      
     }
 }

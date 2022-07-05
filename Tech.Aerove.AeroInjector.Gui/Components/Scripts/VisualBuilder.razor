@@ -1,0 +1,54 @@
+﻿<div class="row">
+    @if (ParseError != "")
+    {
+        <small class="col-12">
+            @ParseError
+        </small>
+    }
+    <div class="col-12">
+        <button class="btn btn-sm btn-blurp w-100 mb-2" @onclick="AddCommand">Add Command</button>
+    </div>
+    @for (int x = 0; x < Script.ContentLineCount; x++)
+    {
+        var lineNum = x;
+        var commandStr = Script.GetLine(x);
+        if (String.IsNullOrWhiteSpace(commandStr))
+        {
+            continue;
+        }
+        try
+        {
+            var command = Tech.Aerove.AeroInjector.Scripting.ScriptParser.Parse(commandStr)[0];
+
+            <div class="col-12 mb-3" ddd="@lineNum" style="cursor:pointer;">
+                <div class="input-group">
+                    <button class="btn btn-outline-danger" @onclick="()=>OnDeleteCommand(lineNum)" style="padding-left:11px;padding-right:11px;">
+                        <span class="oi oi-trash"></span>
+                    </button>
+                    <span class="input-group-text" style="color:var(--blurp)" @onclick="()=>ModifyCommand(lineNum)">@GetName(command).ToUpper()</span>
+
+                    @foreach (var kv in command.Arguments)
+                    {
+                        var value = kv.Value;
+                        if(kv.Key.ToLower() == "path")
+                        {
+                            value = value.Split("\\").Last();
+                        }
+                        <span class="input-group-text" title="@kv.Key" style="color:var(--neonGreen)" @onclick="()=>ModifyCommand(lineNum)">@value</span>
+                    }
+
+
+
+                </div>
+            </div>
+        }
+        catch
+        {
+
+        }
+    }
+</div>
+
+<ModifyCommand Script="Script" LineNumber="SelectedCommandLineNumber" Update="UpdateUI" />
+
+

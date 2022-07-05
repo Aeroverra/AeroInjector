@@ -1,6 +1,16 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
-
-Welcome to your new app.2
-
+@foreach (var script in ConfigService.GetScripts())
+{
+    <div class="col col-12 mt-2" @onclick="OnLaunch">
+        <div class="item d-flex align-items-center">
+            <div class="image">
+                <img src="@GetImage(script)" class="img-fluid rounded-circle">
+            </div>
+            <div class="text">
+                <h3 class="h5">@script.Name</h3>
+                <small>@GetDescriptions(script)</small>
+            </div>
+        </div>
+    </div>
+}

@@ -4,7 +4,12 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            switch (args[0])
+            {
+                case "config":
+
+                    break;
+            }
         }
     }
 }

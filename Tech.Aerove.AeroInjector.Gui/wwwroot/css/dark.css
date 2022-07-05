@@ -5,6 +5,7 @@
     --darkSelected: #3f434a;
     --darkOffWhite: rgb(150, 152, 157);
     --neonGreen: #27cba8;
+    --neonOrange: #ffc47f;
 }
 body.dark #sidebarMenu {
     background-color: var(--darkBackground) !important;

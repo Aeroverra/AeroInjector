@@ -46,7 +46,7 @@ namespace Tech.Aerove.AeroInjector.Gui.Pages
         }
         public async Task OnSave()
         {
-     
+            await ConfigService.SaveScript(Selected);
         }
         public async Task OnDelete()
         {
@@ -74,10 +74,15 @@ namespace Tech.Aerove.AeroInjector.Gui.Pages
 
             Selected = ConfigService.GetScripts().FirstOrDefault(x => x.Id == id);
         }
-
+        private async Task UpdateUI()
+        {
+            StateHasChanged();
+            await Task.Delay(1);
+        }
         public void Dispose()
         {
             NavigationManager.LocationChanged -= OnLeavePage;
         }
+
     }
 }

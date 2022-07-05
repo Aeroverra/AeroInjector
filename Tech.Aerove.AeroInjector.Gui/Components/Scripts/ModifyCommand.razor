@@ -1,0 +1,72 @@
+﻿<div class="modal top fade" id="modifyModal" tabindex="-1" data-mdb-backdrop="true" data-mdb-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Change Command</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <select class="form-select mb-3" value="@CommandType" style="background-color:var(--darkSelected)" @onchange="OnCommandTypeChange">
+                    @foreach (var type in Tech.Aerove.AeroInjector.Scripting.ScriptParser.GetKnownCommands())
+                    {
+                        <option value="@type">@GetCommandName(type)</option>
+                    }
+                </select>
+                @foreach (var arg in Arguments)
+                {
+                    <div class="input-group mb-3">
+                        <select class="custom-select" value="@arg.Key.ToLower()" style="background-color:var(--darkSelected);color:var(--blurp)" @onchange="e=>OnArgTypeChange(e,arg)">
+                            @if (!KnownCommandArgs.Any(x => x.Key.ToLower() == arg.Key.ToLower()))
+                            {
+                                <option value="@arg.Value.ToLower()" selected>@arg.Key</option>
+                            }
+                            @foreach (var ca in KnownCommandArgs)
+                            {
+                                <option value="@ca.Key.ToLower()">@ca.Key</option>
+                            }
+                        </select>
+                        @if ((CommandType.ToString().Contains("InjectCommand") || CommandType.ToString().Contains("LaunchAppCommand")) && arg.Key.ToLower() == "path")
+                        {
+                            var isDLL = CommandType.ToString().Contains("InjectCommand") ? true : false;
+                            <select class="form-select" value="@arg.Value" style="background-color:var(--darkSelected);color:var(--blurp)" @onchange="e=>OnArgValueChange(e,arg)">
+                                @{
+                                    var apps = ConfigService.GetApplications();
+                                }
+                                @if (isDLL)
+                                {
+                                    apps = ConfigService.GetDlls();
+                                }
+
+                                @if (!apps.Any(x => x.Path == arg.Value))
+                                {
+                                    <option value="@arg.Value" selected>@arg.Value</option>
+                                }
+
+                                @foreach (var ca in apps)
+                                {
+                                    <option value="@ca.Path">@ca.Name</option>
+                                }
+                            </select>
+                        }
+                        else
+                        {
+                          var placeholder = @KnownCommandArgs.FirstOrDefault(x => x.Key.ToLower() == arg.Key.ToLower()).Value+"                             ";//spaces make max width
+
+                            <input type="text" class="form-control" style="height:100%;" value="@arg.Value" @onchange="e=>OnArgValueChange(e,arg)" placeholder="@placeholder" />
+
+                        }
+                        <button class="btn btn-outline-danger" @onclick="()=>OnDeleteArg(arg)" style="padding-left:11px;padding-right:11px;">
+                            <span class="oi oi-trash"></span>
+                        </button>
+                    </div>
+                }
+                <button type="button" class="btn btn-sm btn-outline-success w-100" style="color:var(--neonGreen); border-color:var(--neonGreen)" @onclick="OnNewArg">New Parameter</button>
+            </div>
+            <div class="modal-footer">
+
+
+                <button type="button" class="btn btn-blurp w-100" data-mdb-dismiss="modal">Done</button>
+            </div>
+        </div>
+    </div>
+</div>

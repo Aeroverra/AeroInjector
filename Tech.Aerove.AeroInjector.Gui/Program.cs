@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using PhotinoNET;
+using System;
 using System.Drawing;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Tech.Aerove.AeroInjector.Gui
@@ -19,13 +21,13 @@ namespace Tech.Aerove.AeroInjector.Gui
         [STAThread]
         public static void Main(string[] args)
         {
-
+       
             _ = BlazorServer.StartAsync(args);
             Thread.Sleep(1000);
             Photino.Start();
 
         }
-
-
+ 
+     
     }
 }

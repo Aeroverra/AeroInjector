@@ -30,6 +30,10 @@ namespace Tech.Aerove.AeroInjector.Gui.Services
                 var jsonSettings = File.ReadAllText(fileInfo.FullName);
                 Settings = JsonConvert.DeserializeObject<Settings>(jsonSettings);
             }
+            else
+            {
+                Settings = new Settings();
+            }
         }
 
         private async Task SaveSettings()

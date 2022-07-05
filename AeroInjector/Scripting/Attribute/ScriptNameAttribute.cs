@@ -12,7 +12,7 @@ namespace Tech.Aerove.AeroInjector.Scripting.Attribute
     [System.AttributeUsage(System.AttributeTargets.Class)]
     public class ScriptNameAttribute : System.Attribute
     {
-        private string Name;
+        public string Name { get; private set; }
 
         public ScriptNameAttribute(string name)
         {
