@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tech.Aerove.AeroInjector.Injection;
 using Tech.Aerove.AeroInjector.Scripting.Attribute;
 
 namespace Tech.Aerove.AeroInjector.Scripting.Commands
@@ -23,12 +24,17 @@ namespace Tech.Aerove.AeroInjector.Scripting.Commands
 
         public void Execute()
         {
-            var processId = Variables["processid"];
+            var processId = int.Parse(Variables["processid"]);
             var dllPath = Arguments.First(x => x.Key.ToLower() == "path").Value;
-            var args = Arguments.First(x => x.Key.ToLower() == "args").Value;
-            throw new NotImplementedException();
+            var args = "";
+            if (Arguments.Any(x => x.Key.ToLower() == "args"))
+            {
+                args = Arguments.FirstOrDefault(x => x.Key.ToLower() == "args").Value;
+            }
+            Injector.Inject(processId, dllPath);
         }
 
-      
+
+
     }
 }

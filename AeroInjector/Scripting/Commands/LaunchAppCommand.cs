@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,8 +25,24 @@ namespace Tech.Aerove.AeroInjector.Scripting.Commands
         {
 
             var exePath = Arguments.First(x => x.Key.ToLower() == "path").Value;
-            var args = Arguments.First(x => x.Key.ToLower() == "args").Value;
-            throw new NotImplementedException();
+            var args = "";
+            if (Arguments.Any(x => x.Key.ToLower() == "args"))
+            {
+                args = Arguments.FirstOrDefault(x => x.Key.ToLower() == "args").Value;
+            }
+            var process = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    Arguments = args,
+                    FileName = exePath,
+                    WorkingDirectory = new FileInfo(exePath).Directory.FullName,
+                    
+                },
+                EnableRaisingEvents = true
+            };
+            process.Start();
+            Variables["processid"] = $"{process.Id}";
         }
       
     }

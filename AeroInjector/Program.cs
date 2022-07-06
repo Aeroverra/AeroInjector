@@ -1,19 +1,32 @@
-﻿namespace Tech.Aerove.AeroInjector
+﻿using System.Text;
+using Tech.Aerove.AeroInjector.Scripting;
+
+namespace Tech.Aerove.AeroInjector
 {
-    internal class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             var mode = args[0];
             var value = args[1];
             switch (mode)
             {
                 case "script":
-
+                    byte[] data = Convert.FromBase64String(value);
+                    string decodedString = Encoding.UTF8.GetString(data);
+                    RunScript(decodedString);
                     break;
                 case "scriptpath":
-
+                    //todo implement auto reading file
                     break;
+            }
+        }
+        public static void RunScript(string script)
+        {
+            var commands = ScriptParser.Parse(script);
+            foreach (var command in commands)
+            {
+                command.Execute();
             }
         }
     }

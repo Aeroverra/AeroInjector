@@ -25,9 +25,9 @@ namespace Tech.Aerove.AeroInjector.Gui.Pages
     public partial class Index
     {
         [Inject] public ConfigService ConfigService { get; set; }
-        public async Task OnLaunch()
+        public void OnLaunch(Script script)
         {
-
+            AeroInjector.Program.RunScript(script.Content);
         }
         private  string GetImage(Script script)
         {
@@ -35,7 +35,7 @@ namespace Tech.Aerove.AeroInjector.Gui.Pages
             {
                 var app = script.GetAsCommands().FirstOrDefault(x => x.GetType() == typeof(LaunchAppCommand));
 
-                var path = app.Arguments.FirstOrDefault(x => x.Key.ToLower() == "path").Value;
+                var path = app.Arguments.LastOrDefault(x => x.Key.ToLower() == "path").Value;
 
                 return IconTools.GetIconAsImageUri(path);
             }

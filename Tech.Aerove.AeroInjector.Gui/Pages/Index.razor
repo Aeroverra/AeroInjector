@@ -2,7 +2,7 @@
 
 @foreach (var script in ConfigService.GetScripts())
 {
-    <div class="col col-12 mt-2" @onclick="OnLaunch">
+    <div class="col col-12 mt-2" @onclick="()=>OnLaunch(script)">
         <div class="item d-flex align-items-center">
             <div class="image">
                 <img src="@GetImage(script)" class="img-fluid rounded-circle">
