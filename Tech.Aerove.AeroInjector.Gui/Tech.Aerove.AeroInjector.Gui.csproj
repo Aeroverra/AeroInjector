@@ -101,7 +101,7 @@
     <FrameworkReference Include="Microsoft.WindowsDesktop.App.WindowsForms" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Tech.Aerove.Lib.Public\Tech.Aerove.Lib.Public.csproj" />
+    <ProjectReference Include="..\..\Repos\Tech.Aerove.Lib.Public\Tech.Aerove.Lib.Public\Tech.Aerove.Lib.Public.csproj" />
     <ProjectReference Include="..\AeroInjector\AeroInjector.csproj" />
   </ItemGroup>
 </Project>

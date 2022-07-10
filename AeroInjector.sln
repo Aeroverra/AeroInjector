@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AeroInjector", "AeroInjecto
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tech.Aerove.AeroInjector.Gui", "Tech.Aerove.AeroInjector.Gui\Tech.Aerove.AeroInjector.Gui.csproj", "{84CB9C9C-0D94-4CBB-AC96-1013FA0FFCA5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tech.Aerove.Lib.Public", "..\Tech.Aerove.Lib.Public\Tech.Aerove.Lib.Public.csproj", "{5C608326-8363-4A49-B6AA-B2C98F05F2DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tech.Aerove.Lib.Public", "..\Repos\Tech.Aerove.Lib.Public\Tech.Aerove.Lib.Public\Tech.Aerove.Lib.Public.csproj", "{25A86FFA-7486-4AC4-9A43-4EF76EF5A239}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{84CB9C9C-0D94-4CBB-AC96-1013FA0FFCA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84CB9C9C-0D94-4CBB-AC96-1013FA0FFCA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84CB9C9C-0D94-4CBB-AC96-1013FA0FFCA5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5C608326-8363-4A49-B6AA-B2C98F05F2DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5C608326-8363-4A49-B6AA-B2C98F05F2DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5C608326-8363-4A49-B6AA-B2C98F05F2DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5C608326-8363-4A49-B6AA-B2C98F05F2DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25A86FFA-7486-4AC4-9A43-4EF76EF5A239}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25A86FFA-7486-4AC4-9A43-4EF76EF5A239}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25A86FFA-7486-4AC4-9A43-4EF76EF5A239}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25A86FFA-7486-4AC4-9A43-4EF76EF5A239}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
