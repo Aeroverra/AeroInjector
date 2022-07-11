@@ -50,6 +50,10 @@ namespace Tech.Aerove.AeroInjector.Gui.Pages
             foreach(var command in script.GetAsCommands())
             {
                 var commandName = command.GetType().GetCustomAttribute<ScriptNameAttribute>().Name;
+                if (command.Arguments.Count() == 0)
+                {
+                    continue;
+                }
                 var commandValue = command.Arguments.First().Value;
                 if(command.Arguments.First().Key.ToLower() == "path")
                 {

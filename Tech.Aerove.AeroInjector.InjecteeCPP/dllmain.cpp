@@ -4,9 +4,13 @@
 #include <Windows.h>
 #define sleep(x) Sleep(1000 * (x))
 #include <metahost.h>
+#include <string>
+#include <fstream>
 #pragma comment(lib, "mscoree.lib")
 
 typedef HRESULT(STDAPICALLTYPE* FnGetNETCoreCLRRuntimeHost)(REFIID riid, IUnknown** pUnk);
+std::string managedDLL;
+
 ICLRRuntimeHost* GetNETCoreCLRRuntimeHost()
 {
 
@@ -57,21 +61,21 @@ void StartCSharpFramework()
 	// Push the big START button shown above
 	hr = pClrRuntimeHost->Start();
 
-	LPCWSTR framework = L"C:\\Users\\Nicholas\\Desktop\\AeroMods\\AeroMods\\FrameworkInjectee\\bin\\Debug\\FrameworkInjectee.dll";
-	LPCWSTR core = L"C:\\Users\\Nicholas\\Desktop\\AeroMods\\AeroMods\\CoreInjectee\\bin\\Debug\\net6.0\\CoreInjectee.dll";
+	std::wstring stemp = std::wstring(managedDLL.begin(), managedDLL.end());
+	LPCWSTR managedInjectee = stemp.c_str();
 	bool UseCore = true;
 	// Okay, the CLR is up and running in this (previously native) process.
 	// Now call a method on our managed C# class library.
 	DWORD dwRet = 0;
 	if (!UseCore) {
 		hr = pClrRuntimeHost->ExecuteInDefaultAppDomain(
-			framework, //<--
+			managedInjectee, //<--
 			L"FrameworkInjectee.InjecteeStart", L"MyMethod", L"pwzArgument", &dwRet);
 	}
 	else {
 		pClrRuntimeHost = GetNETCoreCLRRuntimeHost();
 		hr = pClrRuntimeHost->ExecuteInDefaultAppDomain(
-			core, //<--
+			managedInjectee, //<--
 			L"CoreInjectee.InjecteeStart", L"MyMethod", L"pwzArgument", &dwRet);
 	}
 
@@ -102,7 +106,15 @@ DWORD WINAPI Main(LPVOID lpParam)
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved)
 {
+	
+
 	if (dwReason == DLL_PROCESS_ATTACH) {
+		char Filename[MAX_PATH]; //this is a char buffer
+		GetModuleFileNameA(hModule, Filename, sizeof(Filename));
+		std::string str(Filename);
+		str += ".txt";
+		std::ifstream file(str);
+		std::getline(file, managedDLL);
 		CreateThread(nullptr, 0, Main, hModule, 0, nullptr);
 	}
 	if (dwReason == DLL_PROCESS_DETACH) {}

@@ -18,20 +18,34 @@ namespace Tech.Aerove.AeroInjector.Scripting.Commands
     [ScriptArg("Args", "Specifies the arguments you want to pass to the dll on injection.")]
     public class InjectCommand : IScriptCommand
     {
+        public static string StoragePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AeroInjector");
         public List<KeyValuePair<string, string>> Arguments { get; set; }
         public Dictionary<string, string> Variables { get; set; }
-
+        public readonly DirectoryInfo DLLPath;
+        public InjectCommand()
+        {
+            var path = Path.Combine(StoragePath, "Temp");
+            path = Path.Combine(path, $"{Guid.NewGuid()}");
+            var dir = new DirectoryInfo(path);
+            dir.Create();
+            DLLPath = dir;
+        }
 
         public void Execute()
         {
             var processId = int.Parse(Variables["processid"]);
             var dllPath = Arguments.First(x => x.Key.ToLower() == "path").Value;
+            var originalPath = new FileInfo(dllPath);
+            var newPath = Path.Combine(DLLPath.FullName, originalPath.Name);
+            var argsPath = Path.Combine(DLLPath.FullName, originalPath.Name) + ".txt";
+            File.Copy(dllPath, newPath);
             var args = "";
             if (Arguments.Any(x => x.Key.ToLower() == "args"))
             {
                 args = Arguments.FirstOrDefault(x => x.Key.ToLower() == "args").Value;
             }
-            Injector.Inject(processId, dllPath);
+            File.WriteAllText(argsPath, args);
+            Injector.Inject(processId, newPath);
         }
 
 
