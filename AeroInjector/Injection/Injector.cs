@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,8 +11,32 @@ namespace Tech.Aerove.AeroInjector.Injection
 {
     public static class Injector
     {
+        private static AssemblyFramework CheckDLLVersion(string dllPathNameToInject)
+        {
+            try
+            {
+                var tar = (TargetFrameworkAttribute)Assembly
+                    .LoadFrom(dllPathNameToInject)
+                    .GetCustomAttributes(typeof(TargetFrameworkAttribute))
+                    .First();
+                if (tar.FrameworkName.ToLower().Contains("netcore"))
+                {
+                    return AssemblyFramework.NetCore;
+                }
+                if (tar.FrameworkName.ToLower().Contains("netframework"))
+                {
+                    return AssemblyFramework.NetFramework;
+                }
+            }
+            catch
+            {
+             
+            }
+            return AssemblyFramework.Native;
+        }
         public static bool Inject(int processId, string dllPathNameToInject)
         {
+            CheckDLLVersion(dllPathNameToInject);
             uint dwSize = (uint)((dllPathNameToInject.Length + 1) * Marshal.SizeOf(typeof(char)));
 
             IntPtr intPtr = Win32Calls.OpenProcess(ProcessAccessFlags.CreateThread | ProcessAccessFlags.VirtualMemoryOperation | ProcessAccessFlags.VirtualMemoryRead | ProcessAccessFlags.VirtualMemoryWrite | ProcessAccessFlags.QueryInformation, bInheritHandle: false, (uint)processId);

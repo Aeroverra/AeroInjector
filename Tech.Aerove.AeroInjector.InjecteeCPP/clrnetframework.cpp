@@ -12,7 +12,7 @@ namespace {
 	void StartCSharpFramework(std::string managedDLL)
 	{
 
-		std::cout << "Setting Up C# .NetFramework/Core From C++!\n";
+		std::cout << "Setting Up C# .NetFramework From C++!\n";
 		std::cout << std::endl;
 
 		HRESULT hr;
