@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tech.Aerove.AeroInjector.Gu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tech.Aerove.Lib.Public", "..\Repos\Tech.Aerove.Lib.Public\Tech.Aerove.Lib.Public\Tech.Aerove.Lib.Public.csproj", "{25A86FFA-7486-4AC4-9A43-4EF76EF5A239}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tech.Aerove.AeroInjector.InjecteeCPP", "Tech.Aerove.AeroInjector.InjecteeCPP\Tech.Aerove.AeroInjector.InjecteeCPP.vcxproj", "{A391EBF5-45A3-4C95-A84B-6D7BAE278716}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tech.Aerove.AeroInjector.InjecteeCPP", "Tech.Aerove.AeroInjector.InjecteeCPP\Tech.Aerove.AeroInjector.InjecteeCPP.vcxproj", "{6B7B9F59-13EA-4923-B44D-5E9755AA391C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,18 +57,18 @@ Global
 		{25A86FFA-7486-4AC4-9A43-4EF76EF5A239}.Release|x64.Build.0 = Release|Any CPU
 		{25A86FFA-7486-4AC4-9A43-4EF76EF5A239}.Release|x86.ActiveCfg = Release|Any CPU
 		{25A86FFA-7486-4AC4-9A43-4EF76EF5A239}.Release|x86.Build.0 = Release|Any CPU
-		{A391EBF5-45A3-4C95-A84B-6D7BAE278716}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{A391EBF5-45A3-4C95-A84B-6D7BAE278716}.Debug|Any CPU.Build.0 = Debug|x64
-		{A391EBF5-45A3-4C95-A84B-6D7BAE278716}.Debug|x64.ActiveCfg = Debug|x64
-		{A391EBF5-45A3-4C95-A84B-6D7BAE278716}.Debug|x64.Build.0 = Debug|x64
-		{A391EBF5-45A3-4C95-A84B-6D7BAE278716}.Debug|x86.ActiveCfg = Debug|Win32
-		{A391EBF5-45A3-4C95-A84B-6D7BAE278716}.Debug|x86.Build.0 = Debug|Win32
-		{A391EBF5-45A3-4C95-A84B-6D7BAE278716}.Release|Any CPU.ActiveCfg = Release|x64
-		{A391EBF5-45A3-4C95-A84B-6D7BAE278716}.Release|Any CPU.Build.0 = Release|x64
-		{A391EBF5-45A3-4C95-A84B-6D7BAE278716}.Release|x64.ActiveCfg = Release|x64
-		{A391EBF5-45A3-4C95-A84B-6D7BAE278716}.Release|x64.Build.0 = Release|x64
-		{A391EBF5-45A3-4C95-A84B-6D7BAE278716}.Release|x86.ActiveCfg = Release|Win32
-		{A391EBF5-45A3-4C95-A84B-6D7BAE278716}.Release|x86.Build.0 = Release|Win32
+		{6B7B9F59-13EA-4923-B44D-5E9755AA391C}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{6B7B9F59-13EA-4923-B44D-5E9755AA391C}.Debug|Any CPU.Build.0 = Debug|x64
+		{6B7B9F59-13EA-4923-B44D-5E9755AA391C}.Debug|x64.ActiveCfg = Debug|x64
+		{6B7B9F59-13EA-4923-B44D-5E9755AA391C}.Debug|x64.Build.0 = Debug|x64
+		{6B7B9F59-13EA-4923-B44D-5E9755AA391C}.Debug|x86.ActiveCfg = Debug|Win32
+		{6B7B9F59-13EA-4923-B44D-5E9755AA391C}.Debug|x86.Build.0 = Debug|Win32
+		{6B7B9F59-13EA-4923-B44D-5E9755AA391C}.Release|Any CPU.ActiveCfg = Release|x64
+		{6B7B9F59-13EA-4923-B44D-5E9755AA391C}.Release|Any CPU.Build.0 = Release|x64
+		{6B7B9F59-13EA-4923-B44D-5E9755AA391C}.Release|x64.ActiveCfg = Release|x64
+		{6B7B9F59-13EA-4923-B44D-5E9755AA391C}.Release|x64.Build.0 = Release|x64
+		{6B7B9F59-13EA-4923-B44D-5E9755AA391C}.Release|x86.ActiveCfg = Release|Win32
+		{6B7B9F59-13EA-4923-B44D-5E9755AA391C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
