@@ -15,24 +15,38 @@ namespace Tech.Aerove.AeroInjector.Injection
     {
         public readonly int ProcessId;
         public readonly string DllInjecteePath;
+        public readonly string? ManagedNamespace;
+        public readonly string? ManagedMethod;
         public readonly AssemblyFramework AssemblyFramework;
-        public Injector(int processId, string dllInjecteePath)
+        public Injector(int processId, string dllInjecteePath, string? managedNamespace = null, string? managedMethod = null)
         {
             ProcessId = processId;
             DllInjecteePath = dllInjecteePath;
+            ManagedNamespace = managedNamespace;
+            ManagedMethod = managedMethod;
             AssemblyFramework = DLLUtils.GetFramework(DllInjecteePath);
         }
 
-        public bool Inject()
+
+        public bool Inject(string? args = null)
         {
-            if (AssemblyFramework ==AssemblyFramework.Native)
+            if (AssemblyFramework == AssemblyFramework.Native)
             {
-                return Inject(DllInjecteePath);
+                return InjectDLL(DllInjecteePath);
             }
-            var assemblyLocation = Assembly.GetExecutingAssembly().Location;
+
+            //copy InjecteeCPP to temp folder
+            var tempDir = FileUtils.GetTempDirectory();
+            var injecteeCPP = FileUtils.CopyInjecteeCPP(tempDir);
+            FileUtils.WriteManagedArgs(tempDir, AssemblyFramework, DllInjecteePath, ManagedNamespace, ManagedMethod, args);
+            if (AssemblyFramework == AssemblyFramework.NetCore)
+            {
+                FileUtils.CopyNetCore(tempDir);
+            }
+            InjectDLL(injecteeCPP);
             return false;
         }
-        private bool Inject(string dllInjecteePath)
+        private bool InjectDLL(string dllInjecteePath)
         {
 
             uint dwSize = (uint)((dllInjecteePath.Length + 1) * Marshal.SizeOf(typeof(char)));

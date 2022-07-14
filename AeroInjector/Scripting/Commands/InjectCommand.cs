@@ -16,36 +16,39 @@ namespace Tech.Aerove.AeroInjector.Scripting.Commands
     [ScriptName("Inject")]
     [ScriptArg("Path", "Specifies the path to the DLL you want to Inject")]
     [ScriptArg("Args", "Specifies the arguments you want to pass to the dll on injection.")]
+    [ScriptArg("Namespace", "Namespace within a managed DLL where your first method will be called.")]
+    [ScriptArg("Method", "Method to call within a managed DLL.")]
     public class InjectCommand : IScriptCommand
     {
-        public static string StoragePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AeroInjector");
         public List<KeyValuePair<string, string>> Arguments { get; set; }
         public Dictionary<string, string> Variables { get; set; }
-        public readonly DirectoryInfo DLLPath;
-        public InjectCommand()
-        {
-            var path = Path.Combine(StoragePath, "Temp");
-            path = Path.Combine(path, $"{Guid.NewGuid()}");
-            var dir = new DirectoryInfo(path);
-            dir.Create();
-            DLLPath = dir;
-        }
+
+
 
         public void Execute()
         {
             var processId = int.Parse(Variables["processid"]);
             var dllPath = Arguments.First(x => x.Key.ToLower() == "path").Value;
             var originalPath = new FileInfo(dllPath);
-            var newPath = Path.Combine(DLLPath.FullName, originalPath.Name);
-            var argsPath = Path.Combine(DLLPath.FullName, originalPath.Name) + ".txt";
-            File.Copy(dllPath, newPath);
+
+
             var args = "";
             if (Arguments.Any(x => x.Key.ToLower() == "args"))
             {
                 args = Arguments.FirstOrDefault(x => x.Key.ToLower() == "args").Value;
             }
-            File.WriteAllText(argsPath, args);
-            var injector = new Injector(processId, newPath);
+            var managedNamespace = "";
+            if (Arguments.Any(x => x.Key.ToLower() == "namespace"))
+            {
+                managedNamespace = Arguments.FirstOrDefault(x => x.Key.ToLower() == "namespace").Value;
+            }
+            var managedMethod = "";
+            if (Arguments.Any(x => x.Key.ToLower() == "method"))
+            {
+                managedMethod = Arguments.FirstOrDefault(x => x.Key.ToLower() == "method").Value;
+            }
+
+            var injector = new Injector(processId, dllPath, managedNamespace, managedMethod);
             injector.Inject();
         }
 
