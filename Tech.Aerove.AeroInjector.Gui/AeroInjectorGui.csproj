@@ -6,6 +6,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Tech.Aerove.AeroInjector.Gui</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -101,7 +102,7 @@
     <FrameworkReference Include="Microsoft.WindowsDesktop.App.WindowsForms" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Repos\Tech.Aerove.Lib.Public\Tech.Aerove.Lib.Public\Tech.Aerove.Lib.Public.csproj" />
+    <ProjectReference Include="..\..\Repos\Tech.Aerove.Lib.Public\Tech.Aerove.Lib.Public\LibPublic.csproj" />
     <ProjectReference Include="..\AeroInjector\AeroInjector.csproj" />
   </ItemGroup>
 </Project>

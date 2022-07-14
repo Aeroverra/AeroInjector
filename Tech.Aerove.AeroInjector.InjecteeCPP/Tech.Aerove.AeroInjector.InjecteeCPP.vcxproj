@@ -24,6 +24,7 @@
     <ProjectGuid>{6b7b9f59-13ea-4923-b44d-5e9755aa391c}</ProjectGuid>
     <RootNamespace>TechAeroveAeroInjectorInjecteeCPP</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>InjecteeCPP</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

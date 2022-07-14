@@ -8,11 +8,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AeroInjector", "AeroInjecto
 		{6B7B9F59-13EA-4923-B44D-5E9755AA391C} = {6B7B9F59-13EA-4923-B44D-5E9755AA391C}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tech.Aerove.AeroInjector.Gui", "Tech.Aerove.AeroInjector.Gui\Tech.Aerove.AeroInjector.Gui.csproj", "{84CB9C9C-0D94-4CBB-AC96-1013FA0FFCA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AeroInjectorGui", "Tech.Aerove.AeroInjector.Gui\AeroInjectorGui.csproj", "{84CB9C9C-0D94-4CBB-AC96-1013FA0FFCA5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tech.Aerove.Lib.Public", "..\Repos\Tech.Aerove.Lib.Public\Tech.Aerove.Lib.Public\Tech.Aerove.Lib.Public.csproj", "{25A86FFA-7486-4AC4-9A43-4EF76EF5A239}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibPublic", "..\Repos\Tech.Aerove.Lib.Public\Tech.Aerove.Lib.Public\LibPublic.csproj", "{25A86FFA-7486-4AC4-9A43-4EF76EF5A239}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tech.Aerove.AeroInjector.InjecteeCPP", "Tech.Aerove.AeroInjector.InjecteeCPP\Tech.Aerove.AeroInjector.InjecteeCPP.vcxproj", "{6B7B9F59-13EA-4923-B44D-5E9755AA391C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InjecteeCPP", "Tech.Aerove.AeroInjector.InjecteeCPP\Tech.Aerove.AeroInjector.InjecteeCPP.vcxproj", "{6B7B9F59-13EA-4923-B44D-5E9755AA391C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
