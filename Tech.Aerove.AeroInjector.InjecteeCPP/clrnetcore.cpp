@@ -123,21 +123,26 @@ namespace
 		return clrRuntimeHost;
 	}
 
-	void StartCSharpCore(std::string managedDLL, char clrDirectoryPath[])
+	void StartCSharpCore(std::string clrDirectoryPath, std::string managedDll, std::string managedNamespace, std::string managedMethod, std::string managedArgs)
 	{
 		//sleep(10);//uncomment for time to turn on debugger after manual injection
 		std::cout << "Setting C# .NET Core Injection From C++!\n";
 		std::cout << std::endl;
 
 
-		std::wstring stemp = std::wstring(managedDLL.begin(), managedDLL.end());
-		LPCWSTR managedInjectee = stemp.c_str();
+		std::wstring lManagedDll = std::wstring(managedDll.begin(), managedDll.end());
+		std::wstring lmanagedNamespace = std::wstring(managedNamespace.begin(), managedNamespace.end());
+		std::wstring lmanagedMethod = std::wstring(managedMethod.begin(), managedMethod.end());
+		std::wstring lmanagedArgs = std::wstring(managedMethod.begin(), managedMethod.end());
+
+		//Access Violation Exception? Sucks to suck..
+		//jk fix is usually making sure both this and the injectee is 64 bit and likely the app.
 
 		DWORD dwRet = 0;
-		ICLRRuntimeHost* pClrRuntimeHost = GetNETCoreCLRRuntimeHost(clrDirectoryPath);
+		ICLRRuntimeHost* pClrRuntimeHost = GetNETCoreCLRRuntimeHost(const_cast<char*>(clrDirectoryPath.c_str()));
 		HRESULT hr = pClrRuntimeHost->ExecuteInDefaultAppDomain(
-			managedInjectee, //<--
-			L"CoreInjectee.InjecteeStart", L"MyMethod", L"pwzArgument", &dwRet);
+			lManagedDll.c_str(), //<--
+			lmanagedNamespace.c_str(), lmanagedMethod.c_str(), lmanagedArgs.c_str(), &dwRet);
 
 
 		std::cout << "C# DLL closed with response " + dwRet;

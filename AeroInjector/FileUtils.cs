@@ -33,6 +33,11 @@ namespace Tech.Aerove.AeroInjector
             var injecteeCPP = Path.Combine(assemblyLocation.FullName, "InjecteeCPP.dll");
             var injecteeCPPDest = Path.Combine(destination.FullName, "InjecteeCPP.dll");
             File.Copy(injecteeCPP, injecteeCPPDest);
+
+            var injecteeCPPPDB = Path.Combine(assemblyLocation.FullName, "InjecteeCPP.pdb");
+            var injecteeCPPDestPDB = Path.Combine(destination.FullName, "InjecteeCPP.pdb");
+            File.Copy(injecteeCPPPDB, injecteeCPPDestPDB);
+
             return injecteeCPPDest;
         }
 

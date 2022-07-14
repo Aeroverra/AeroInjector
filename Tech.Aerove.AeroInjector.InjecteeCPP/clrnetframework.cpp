@@ -9,7 +9,7 @@
 namespace {
 
 
-	void StartCSharpFramework(std::string managedDLL)
+	void StartCSharpFramework(std::string clrDirectoryPath, std::string managedDll, std::string managedNamespace, std::string managedMethod, std::string managedArgs)
 	{
 
 		std::cout << "Setting Up C# .NetFramework From C++!\n";
@@ -31,16 +31,18 @@ namespace {
 		// Push the big START button shown above
 		hr = pClrRuntimeHost->Start();
 
-		std::wstring stemp = std::wstring(managedDLL.begin(), managedDLL.end());
-		LPCWSTR managedInjectee = stemp.c_str();
+		std::wstring lManagedDll = std::wstring(managedDll.begin(), managedDll.end());
+		std::wstring lmanagedNamespace = std::wstring(managedNamespace.begin(), managedNamespace.end());
+		std::wstring lmanagedMethod = std::wstring(managedMethod.begin(), managedMethod.end());
+		std::wstring lmanagedArgs = std::wstring(managedMethod.begin(), managedMethod.end());
 
 		// Okay, the CLR is up and running in this (previously native) process.
 		// Now call a method on our managed C# class library.
 		DWORD dwRet = 0;
 
 		hr = pClrRuntimeHost->ExecuteInDefaultAppDomain(
-			managedInjectee, //<--
-			L"FrameworkInjectee.InjecteeStart", L"MyMethod", L"pwzArgument", &dwRet);
+			lManagedDll.c_str(), //<--
+			lmanagedNamespace.c_str(), lmanagedMethod.c_str(), lmanagedArgs.c_str(), &dwRet);
 
 
 		std::cout << "C# DLL closed with response " + dwRet;

@@ -1,28 +1,43 @@
-// Tech.Aerove.AeroInjector.InjecteeCPP.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//// Tech.Aerove.AeroInjector.InjecteeCPP.cpp : This file contains the 'main' function. Program execution begins and ends there.
+////
 //
-
-#include <iostream>
-#include "coreclrhost.h"
-//#include <dirent.h>
-//#include <dlfcn.h>
-#include <iostream>
-#include <limits.h>
-#include <set>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/stat.h>
-#include <string>
-#include "clrnetcore.cpp"
-#include <fstream>
-#include <metahost.h>
-
-
-int main()
-{
-	std::cout << "Hello World!\n";
-
-	char appPath[] = "C:\\Users\\Nicholas\\Desktop\\AeroMods\\AeroMods\\CoreConsoleApp\\bin\\Release\\net6.0\\publish\\win-x64";
-	std::string coreInjectee = "C:\\Users\\Nicholas\\Desktop\\AeroMods\\AeroMods\\CoreInjectee\\bin\\Debug\\net6.0\\CoreInjectee.dll";
-	StartCSharpCore(coreInjectee, appPath);
-}
-
+//#include <iostream>
+//#include <Windows.h>
+//#include <metahost.h>
+//#include <string>
+//#include <fstream>
+//#include "clrnetframework.cpp"
+//#include "clrnetcore.cpp"
+//
+//std::string CLRDirectory;
+//std::string AssemblyFramework;
+//std::string ManagedDLL;
+//std::string ManagedNamespace;
+//std::string ManagedMethod;
+//std::string ManagedArgs;
+//int main()
+//{
+//	std::cout << "Hello World!\n";
+//
+//	//Read Params from File
+//	char Filename[] = "C:\\Users\\Nicholas\\Desktop\\AeroInjector\\x64\\Debug\\InjecteeCPP.exe";
+//
+//	std::string str(Filename);
+//	int dllNameLength = 16;//\\InjecteeCPP.dll
+//	CLRDirectory = str.substr(0, str.length() - dllNameLength);
+//	str += ".txt";
+//	std::ifstream file(str);
+//	std::getline(file, AssemblyFramework);
+//	std::getline(file, ManagedDLL);
+//	std::getline(file, ManagedNamespace);
+//	std::getline(file, ManagedMethod);
+//	std::getline(file, ManagedArgs);
+//	bool UseCore = AssemblyFramework == "NetCore";
+//	if (UseCore) {
+//		StartCSharpCore(CLRDirectory, ManagedDLL, ManagedNamespace, ManagedMethod, ManagedArgs);
+//	}
+//	else {
+//		StartCSharpFramework(CLRDirectory, ManagedDLL, ManagedNamespace, ManagedMethod, ManagedArgs);
+//	}
+//}
+//

@@ -43,8 +43,7 @@ namespace Tech.Aerove.AeroInjector.Injection
             {
                 FileUtils.CopyNetCore(tempDir);
             }
-            InjectDLL(injecteeCPP);
-            return false;
+           return InjectDLL(injecteeCPP);
         }
         private bool InjectDLL(string dllInjecteePath)
         {

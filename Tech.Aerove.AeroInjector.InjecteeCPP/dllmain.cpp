@@ -9,21 +9,25 @@
 #include "clrnetcore.cpp"
 #define sleep(x) Sleep(1000 * (x))
 
-std::string managedDLL;
-
+std::string CLRDirectory;
+std::string AssemblyFramework;
+std::string ManagedDLL;
+std::string ManagedNamespace;
+std::string ManagedMethod;
+std::string ManagedArgs;
 
 
 DWORD WINAPI Main(LPVOID lpParam)
 {
 	//sleep(10);//uncomment for time to turn on debugger after manual injection
-	//AllocConsole(); //opens console
+	AllocConsole(); //opens console
 
-	bool UseCore = true;
-	if (!UseCore) {
-		StartCSharpFramework(managedDLL);
+	bool UseCore = AssemblyFramework == "NetCore";
+	if (UseCore) {
+		StartCSharpCore(CLRDirectory, ManagedDLL, ManagedNamespace, ManagedMethod, ManagedArgs);
 	}
 	else {
-		//StartCSharpCore(managedDLL);
+		StartCSharpFramework(CLRDirectory, ManagedDLL, ManagedNamespace, ManagedMethod, ManagedArgs);
 	}
 	while (true) {
 		std::cout << "Hello World From C++!\n";
@@ -39,16 +43,20 @@ DWORD WINAPI Main(LPVOID lpParam)
 /// </summary>
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved)
 {
-
-
 	if (dwReason == DLL_PROCESS_ATTACH) {
 		//Read Params from File
-		char Filename[MAX_PATH]; 
+		char Filename[MAX_PATH];
 		GetModuleFileNameA(hModule, Filename, sizeof(Filename));
 		std::string str(Filename);
+		int dllNameLength = 16;//\\InjecteeCPP.dll
+		CLRDirectory = str.substr(0, str.length() - dllNameLength);
 		str += ".txt";
 		std::ifstream file(str);
-		std::getline(file, managedDLL);
+		std::getline(file, AssemblyFramework);
+		std::getline(file, ManagedDLL);
+		std::getline(file, ManagedNamespace);
+		std::getline(file, ManagedMethod);
+		std::getline(file, ManagedArgs);
 		CreateThread(nullptr, 0, Main, hModule, 0, nullptr);
 	}
 	if (dwReason == DLL_PROCESS_DETACH) {}
