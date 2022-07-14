@@ -1,45 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 using System.Text;
 using System.Threading.Tasks;
+using Tech.Aerove.AeroInjector.Injection.Native;
 
 namespace Tech.Aerove.AeroInjector.Injection
 {
-    public static class Injector
+    public class Injector
     {
-        private static AssemblyFramework CheckDLLVersion(string dllPathNameToInject)
+        public readonly int ProcessId;
+        public readonly string DllInjecteePath;
+        public readonly AssemblyFramework AssemblyFramework;
+        public Injector(int processId, string dllInjecteePath)
         {
-            try
-            {
-                var tar = (TargetFrameworkAttribute)Assembly
-                    .LoadFrom(dllPathNameToInject)
-                    .GetCustomAttributes(typeof(TargetFrameworkAttribute))
-                    .First();
-                if (tar.FrameworkName.ToLower().Contains("netcore"))
-                {
-                    return AssemblyFramework.NetCore;
-                }
-                if (tar.FrameworkName.ToLower().Contains("netframework"))
-                {
-                    return AssemblyFramework.NetFramework;
-                }
-            }
-            catch
-            {
-             
-            }
-            return AssemblyFramework.Native;
+            ProcessId = processId;
+            DllInjecteePath = dllInjecteePath;
+            AssemblyFramework = DLLUtils.GetFramework(DllInjecteePath);
         }
-        public static bool Inject(int processId, string dllPathNameToInject)
-        {
-            CheckDLLVersion(dllPathNameToInject);
-            uint dwSize = (uint)((dllPathNameToInject.Length + 1) * Marshal.SizeOf(typeof(char)));
 
-            IntPtr intPtr = Win32Calls.OpenProcess(ProcessAccessFlags.CreateThread | ProcessAccessFlags.VirtualMemoryOperation | ProcessAccessFlags.VirtualMemoryRead | ProcessAccessFlags.VirtualMemoryWrite | ProcessAccessFlags.QueryInformation, bInheritHandle: false, (uint)processId);
+        public bool Attach()
+        {
+            return true;
+        }
+        public bool Inject()
+        {
+            DLLUtils.GetFramework(DllInjecteePath);
+            uint dwSize = (uint)((DllInjecteePath.Length + 1) * Marshal.SizeOf(typeof(char)));
+
+            IntPtr intPtr = Win32Calls.OpenProcess(ProcessAccessFlags.CreateThread | ProcessAccessFlags.VirtualMemoryOperation | ProcessAccessFlags.VirtualMemoryRead | ProcessAccessFlags.VirtualMemoryWrite | ProcessAccessFlags.QueryInformation, bInheritHandle: false, (uint)ProcessId);
             if (intPtr == IntPtr.Zero)
             {
                 var errorCode = Marshal.GetLastWin32Error();
@@ -58,7 +51,7 @@ namespace Tech.Aerove.AeroInjector.Injection
                 return false;
             }
             Thread.Sleep(500);
-            byte[] bytes = Encoding.Default.GetBytes(dllPathNameToInject);
+            byte[] bytes = Encoding.Default.GetBytes(DllInjecteePath);
             if (!Win32Calls.WriteProcessMemory(intPtr, intPtr2, bytes, dwSize, out var lpNumberOfBytesWritten) || lpNumberOfBytesWritten.ToInt32() != bytes.Length + 1)
             {
                 var errorCode = Marshal.GetLastWin32Error();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tech.Aerove.AeroInjector.Injection
 {
-    internal enum AssemblyFramework
+    public enum AssemblyFramework
     {
         Native, NetCore, NetFramework
     }

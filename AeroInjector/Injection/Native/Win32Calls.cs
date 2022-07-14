@@ -7,7 +7,7 @@ using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tech.Aerove.AeroInjector.Injection
+namespace Tech.Aerove.AeroInjector.Injection.Native
 {
     internal class Win32Calls
     {

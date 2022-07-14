@@ -8,4 +8,8 @@
     <RootNamespace>Tech.Aerove.AeroInjector</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Tech.Aerove.AeroInjector.InjecteeCPP\Tech.Aerove.AeroInjector.InjecteeCPP.vcxproj" />
+  </ItemGroup>
+
 </Project>
