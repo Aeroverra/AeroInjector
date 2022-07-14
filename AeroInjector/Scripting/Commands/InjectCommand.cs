@@ -46,7 +46,6 @@ namespace Tech.Aerove.AeroInjector.Scripting.Commands
             }
             File.WriteAllText(argsPath, args);
             var injector = new Injector(processId, newPath);
-            injector.Attach();
             injector.Inject();
         }
 

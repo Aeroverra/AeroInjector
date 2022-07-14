@@ -23,27 +23,38 @@ namespace Tech.Aerove.AeroInjector.Injection
             AssemblyFramework = DLLUtils.GetFramework(DllInjecteePath);
         }
 
-        public bool Attach()
-        {
-            return true;
-        }
         public bool Inject()
         {
-            DLLUtils.GetFramework(DllInjecteePath);
-            uint dwSize = (uint)((DllInjecteePath.Length + 1) * Marshal.SizeOf(typeof(char)));
+            if (AssemblyFramework ==AssemblyFramework.Native)
+            {
+                return Inject(DllInjecteePath);
+            }
+            var assemblyLocation = Assembly.GetExecutingAssembly().Location;
+            return false;
+        }
+        private bool Inject(string dllInjecteePath)
+        {
 
-            IntPtr intPtr = Win32Calls.OpenProcess(ProcessAccessFlags.CreateThread | ProcessAccessFlags.VirtualMemoryOperation | ProcessAccessFlags.VirtualMemoryRead | ProcessAccessFlags.VirtualMemoryWrite | ProcessAccessFlags.QueryInformation, bInheritHandle: false, (uint)ProcessId);
+            uint dwSize = (uint)((dllInjecteePath.Length + 1) * Marshal.SizeOf(typeof(char)));
+
+            //open host process
+            var flags = ProcessAccessFlags.CreateThread | ProcessAccessFlags.VirtualMemoryOperation | ProcessAccessFlags.VirtualMemoryRead | ProcessAccessFlags.VirtualMemoryWrite | ProcessAccessFlags.QueryInformation;
+            IntPtr intPtr = Win32Calls.OpenProcess(flags, bInheritHandle: false, (uint)ProcessId);
             if (intPtr == IntPtr.Zero)
             {
                 var errorCode = Marshal.GetLastWin32Error();
                 return false;
             }
+
+            //getting address of LoadLibraryA function
             IntPtr procAddress = Win32Calls.GetProcAddress(Win32Calls.GetModuleHandle("kernel32.dll"), "LoadLibraryA");
             if (procAddress == IntPtr.Zero)
             {
                 var errorCode = Marshal.GetLastWin32Error();
                 return false;
             }
+
+            //Allocating memory in the host process for the injectee filename
             IntPtr intPtr2 = Win32Calls.VirtualAllocEx(intPtr, IntPtr.Zero, dwSize, AllocationType.Commit | AllocationType.Reserve, MemoryProtection.ReadWrite);
             if (intPtr2 == IntPtr.Zero)
             {
@@ -51,17 +62,22 @@ namespace Tech.Aerove.AeroInjector.Injection
                 return false;
             }
             Thread.Sleep(500);
-            byte[] bytes = Encoding.Default.GetBytes(DllInjecteePath);
+
+            //Writing dll filename into memory allocated in host process
+            byte[] bytes = Encoding.Default.GetBytes(dllInjecteePath);
             if (!Win32Calls.WriteProcessMemory(intPtr, intPtr2, bytes, dwSize, out var lpNumberOfBytesWritten) || lpNumberOfBytesWritten.ToInt32() != bytes.Length + 1)
             {
                 var errorCode = Marshal.GetLastWin32Error();
                 return false;
             }
+
+            //Create a thread in the host process to load the injectee
             if (Win32Calls.CreateRemoteThread(intPtr, IntPtr.Zero, 0u, procAddress, intPtr2, 0u, IntPtr.Zero) == IntPtr.Zero)
             {
                 var errorCode = Marshal.GetLastWin32Error();
                 return false;
             }
+
             if (!Win32Calls.CloseHandle(intPtr))
             {
                 var errorCode = Marshal.GetLastWin32Error();

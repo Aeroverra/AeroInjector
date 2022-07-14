@@ -9,7 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Tech.Aerove.AeroInjector.InjecteeCPP\Tech.Aerove.AeroInjector.InjecteeCPP.vcxproj" />
+    <None Update="Tech.Aerove.AeroInjector.InjecteeCPP.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

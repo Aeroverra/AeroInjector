@@ -29,25 +29,21 @@ namespace Tech.Aerove.AeroInjector.Gui.Pages
         {
             AeroInjector.Program.RunScript(script.Content);
         }
-        private  string GetImage(Script script)
+        private string GetImage(Script script)
         {
-            try
+            var app = script.GetAsCommands().FirstOrDefault(x => x.GetType() == typeof(LaunchAppCommand));
+
+            if (app != null && app.Arguments.Any(x => x.Key.ToLower() == "path"))
             {
-                var app = script.GetAsCommands().FirstOrDefault(x => x.GetType() == typeof(LaunchAppCommand));
-
                 var path = app.Arguments.LastOrDefault(x => x.Key.ToLower() == "path").Value;
-
                 return IconTools.GetIconAsImageUri(path);
             }
-            catch
-            {
-                return "";
-            }
+            return "";
         }
-        private string  GetDescriptions(Script script)
+        private string GetDescriptions(Script script)
         {
             var description = "";
-            foreach(var command in script.GetAsCommands())
+            foreach (var command in script.GetAsCommands())
             {
                 var commandName = command.GetType().GetCustomAttribute<ScriptNameAttribute>().Name;
                 if (command.Arguments.Count() == 0)
@@ -55,7 +51,7 @@ namespace Tech.Aerove.AeroInjector.Gui.Pages
                     continue;
                 }
                 var commandValue = command.Arguments.First().Value;
-                if(command.Arguments.First().Key.ToLower() == "path")
+                if (command.Arguments.First().Key.ToLower() == "path")
                 {
                     commandValue = commandValue.Split("\\").Last();
                 }

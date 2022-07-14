@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.3.32611.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AeroInjector", "AeroInjector\AeroInjector.csproj", "{5F98FCA3-BE96-4FD9-B3EB-226A6E02CB2F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6B7B9F59-13EA-4923-B44D-5E9755AA391C} = {6B7B9F59-13EA-4923-B44D-5E9755AA391C}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tech.Aerove.AeroInjector.Gui", "Tech.Aerove.AeroInjector.Gui\Tech.Aerove.AeroInjector.Gui.csproj", "{84CB9C9C-0D94-4CBB-AC96-1013FA0FFCA5}"
 EndProject
