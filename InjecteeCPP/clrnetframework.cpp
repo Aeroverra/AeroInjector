@@ -12,7 +12,7 @@ namespace {
 	void StartCSharpFramework(std::string clrDirectoryPath, std::string managedDll, std::string managedNamespace, std::string managedMethod, std::string managedArgs)
 	{
 
-		std::cout << "Setting Up C# .NetFramework From C++!\n";
+		std::cout << "[Aero C++] Setting Up C# .Net Framework From C++!\n";
 		std::cout << std::endl;
 
 		HRESULT hr;
@@ -26,7 +26,7 @@ namespace {
 		hr = pRuntimeInfo->GetInterface(CLSID_CLRRuntimeHost,
 			IID_PPV_ARGS(&pClrRuntimeHost));
 
-		std::cout << "Starting C# .NetFramework From C++!\n";
+		std::cout << "[Aero C++] Starting C# .Net Framework From C++!\n";
 		std::cout << std::endl;
 		// Push the big START button shown above
 		hr = pClrRuntimeHost->Start();
@@ -45,7 +45,7 @@ namespace {
 			lmanagedNamespace.c_str(), lmanagedMethod.c_str(), lmanagedArgs.c_str(), &dwRet);
 
 
-		std::cout << "C# DLL closed with response " + dwRet;
+		std::cout << "[Aero C++] C# DLL closed with response " + dwRet;
 
 		// Optionally stop the CLR runtime (we could also leave it running)
 		hr = pClrRuntimeHost->Stop();

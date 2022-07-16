@@ -21,6 +21,11 @@ DWORD WINAPI Main(LPVOID lpParam)
 {
 	//sleep(10);//uncomment for time to turn on debugger after manual injection
 	AllocConsole(); //opens console
+	FILE* fp;
+	freopen_s(&fp, "CONOUT$", "w", stdout);
+	std::cout.clear();
+	printf("[Aero C++] Console Opened!\r\n");
+
 
 	bool UseCore = AssemblyFramework == "NetCore";
 	if (UseCore) {
@@ -29,11 +34,9 @@ DWORD WINAPI Main(LPVOID lpParam)
 	else {
 		StartCSharpFramework(CLRDirectory, ManagedDLL, ManagedNamespace, ManagedMethod, ManagedArgs);
 	}
-	while (true) {
-		std::cout << "Hello World From C++!\n";
-		std::cout << std::endl;
-		sleep(2);
-	}
+
+		std::cout << "[Aero C++] Thread Exiting...\r\n";
+
 	return 1;
 }
 

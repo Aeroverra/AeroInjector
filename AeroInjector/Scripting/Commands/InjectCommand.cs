@@ -49,7 +49,7 @@ namespace Tech.Aerove.AeroInjector.Scripting.Commands
             }
 
             var injector = new Injector(processId, dllPath, managedNamespace, managedMethod);
-            injector.Inject();
+            injector.Inject(args);
         }
 
 

@@ -46,16 +46,16 @@ namespace
 		LPCWSTR lpcCoreCLRDLL = stemp.c_str();
 		HINSTANCE hGetProcIDDLL = LoadLibrary(lpcCoreCLRDLL);
 		if (!hGetProcIDDLL) {
-			std::cout << "could not load the dynamic library" << std::endl;
+			std::cout << "[Aero C++] Bootstrap Failed. Could not load the dynamic library." << std::endl;
 			return NULL;
 		}
-		std::cout << "Success Load CoreCLR!\n";
+		std::cout << "[Aero C++] Coreclr loaded as dynamic library.\n";
 		coreclr_initialize_ptr coreclr_init = (coreclr_initialize_ptr)GetProcAddress(hGetProcIDDLL, "coreclr_initialize");
 		if (!coreclr_init) {
-			std::cout << "could not locate the function" << std::endl;
+			std::cout << "[Aero C++] Could not bind coreclr Init function." << std::endl;
 			return NULL;
 		}
-		std::cout << "Found Function!\n";
+		std::cout << "[Aero C++] Coreclr Init Function bound.\n";
 
 
 
@@ -81,11 +81,11 @@ namespace
 			);
 
 		if (ret < 0) {
-			std::cout << "failed to initialize coreclr. cerr = " << ret;
+			std::cout << "[Aero C++] Failed to initialize coreclr. cerr = " << ret;
 			return NULL;
 		}
 
-		std::cout << "core clr loaded!\n";
+		std::cout << "[Aero C++] Bootstrap Success, coreclr loaded!\n";
 		return  ::GetModuleHandle(L"coreclr.dll");
 	}
 	ICLRRuntimeHost* GetNETCoreCLRRuntimeHost(char clrDirectoryPath[])
@@ -94,7 +94,7 @@ namespace
 
 		if (!coreCLRModule)
 		{
-			std::cout << "Could not find CoreCLR. Attempting to bootstrap...\n";
+			std::cout << "[Aero C++] Could not find coreclr. Attempting to bootstrap...\n";
 			//not currently loaded in this process so we need to start an instance
 			coreCLRModule = InjectCoreCLR(clrDirectoryPath);
 			if (!coreCLRModule)
@@ -126,8 +126,8 @@ namespace
 	void StartCSharpCore(std::string clrDirectoryPath, std::string managedDll, std::string managedNamespace, std::string managedMethod, std::string managedArgs)
 	{
 		//sleep(10);//uncomment for time to turn on debugger after manual injection
-		std::cout << "Setting C# .NET Core Injection From C++!\n";
-		std::cout << std::endl;
+		std::cout << "[Aero C++] Setting C# .NET Core Injection From C++!\n";
+
 
 
 		std::wstring lManagedDll = std::wstring(managedDll.begin(), managedDll.end());
@@ -140,12 +140,13 @@ namespace
 
 		DWORD dwRet = 0;
 		ICLRRuntimeHost* pClrRuntimeHost = GetNETCoreCLRRuntimeHost(const_cast<char*>(clrDirectoryPath.c_str()));
+		printf("[Aero C++] Calling C# Now! => %s.%s(%s)\n", managedNamespace.c_str(), managedMethod.c_str(), managedArgs.c_str());
 		HRESULT hr = pClrRuntimeHost->ExecuteInDefaultAppDomain(
 			lManagedDll.c_str(), //<--
 			lmanagedNamespace.c_str(), lmanagedMethod.c_str(), lmanagedArgs.c_str(), &dwRet);
 
 
-		std::cout << "C# DLL closed with response " + dwRet;
+		std::cout << "[Aero C++] C# DLL closed with response " + dwRet;
 
 		// Optionally stop the CLR runtime 
 		hr = pClrRuntimeHost->Stop();

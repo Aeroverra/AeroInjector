@@ -10,12 +10,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="InjecteeCPP.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <None Include="..\InjecteeCPP\bin\InjecteeCPP.dll" Link="InjecteeCPP.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="InjecteeCPP.pdb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <None Include="..\InjecteeCPP\bin\InjecteeCPP.pdb" Link="InjecteeCPP.pdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="NetCore6.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
