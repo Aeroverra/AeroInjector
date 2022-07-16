@@ -40,6 +40,8 @@ namespace {
 		// Now call a method on our managed C# class library.
 		DWORD dwRet = 0;
 
+		printf("[Aero C++] Calling C# Now! => %s.%s(%s)\n", managedNamespace.c_str(), managedMethod.c_str(), managedArgs.c_str());
+
 		hr = pClrRuntimeHost->ExecuteInDefaultAppDomain(
 			lManagedDll.c_str(), //<--
 			lmanagedNamespace.c_str(), lmanagedMethod.c_str(), lmanagedArgs.c_str(), &dwRet);

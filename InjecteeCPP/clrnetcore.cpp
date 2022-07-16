@@ -137,9 +137,10 @@ namespace
 
 		//Access Violation Exception? Sucks to suck..
 		//jk fix is usually making sure both this and the injectee is 64 bit and likely the app.
+		ICLRRuntimeHost* pClrRuntimeHost = GetNETCoreCLRRuntimeHost(const_cast<char*>(clrDirectoryPath.c_str()));
+
 
 		DWORD dwRet = 0;
-		ICLRRuntimeHost* pClrRuntimeHost = GetNETCoreCLRRuntimeHost(const_cast<char*>(clrDirectoryPath.c_str()));
 		printf("[Aero C++] Calling C# Now! => %s.%s(%s)\n", managedNamespace.c_str(), managedMethod.c_str(), managedArgs.c_str());
 		HRESULT hr = pClrRuntimeHost->ExecuteInDefaultAppDomain(
 			lManagedDll.c_str(), //<--
