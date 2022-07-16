@@ -45,8 +45,9 @@ namespace {
 			lmanagedNamespace.c_str(), lmanagedMethod.c_str(), lmanagedArgs.c_str(), &dwRet);
 
 
-		std::cout << "[Aero C++] C# DLL closed with response " + dwRet;
-
+		std::cout << "[Aero C++] C# DLL  " + managedDll + "  closed with response ";	
+		std::cout << dwRet;
+		std::cout << std::endl;
 		// Optionally stop the CLR runtime (we could also leave it running)
 		hr = pClrRuntimeHost->Stop();
 
