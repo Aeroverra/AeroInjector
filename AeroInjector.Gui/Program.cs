@@ -21,10 +21,10 @@ namespace Tech.Aerove.AeroInjector.Gui
         [STAThread]
         public static void Main(string[] args)
         {
-       
-            _ = BlazorServer.StartAsync(args);
+            var blazorServer = new BlazorServer();
+            _= blazorServer.StartAsync(args);
             Thread.Sleep(1000);
-            Photino.Start();
+            Photino.Start(blazorServer.GetPort());
 
         }
  

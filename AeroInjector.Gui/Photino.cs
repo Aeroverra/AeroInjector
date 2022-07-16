@@ -8,7 +8,7 @@ namespace Tech.Aerove.AeroInjector.Gui
 {
     public static class Photino
     {
-        public static void Start()
+        public static void Start(int port)
         {
 
 
@@ -41,7 +41,7 @@ namespace Tech.Aerove.AeroInjector.Gui
 
                     window.SendWebMessage(response);
                 })
-                .Load("http://localhost:5109/"); // Can be used with relative path strings or "new URI()" instance to load a website.
+                .Load($"http://localhost:{port}/"); // Can be used with relative path strings or "new URI()" instance to load a website.
 
             window.WaitForClose(); // Starts the application event loop
 
