@@ -5,7 +5,7 @@
 //https://github.com/dotnet/coreclr/blob/master/src/coreclr/hosts/corerun/corerun.cpp
 //https://yizhang82.dev/hosting-coreclr
 //https://github.com/dotnet/runtime/blob/main/src/native/corehost/hostfxr.h
-
+//hostfxr is reccomended but was not able to get it to work at first. I probably could now.
 #include <iostream>
 #include <Windows.h>
 
@@ -39,7 +39,7 @@ namespace
 	/// </summary>
 	/// <param name="clrDirectoryPath">The path coreclr is located in</param>
 	/// <returns></returns>
-	HMODULE InjectCoreCLR(char clrDirectoryPath[])
+	HMODULE InjectCoreCLR(char clrDirectoryPath[], char managedDLL[])
 	{
 		std::string coreCLRDLL = std::string(clrDirectoryPath) + "\\coreclr.dll";
 		std::wstring stemp = std::wstring(coreCLRDLL.begin(), coreCLRDLL.end());
@@ -58,12 +58,18 @@ namespace
 		std::cout << "[Aero C++] Coreclr Init Function bound.\n";
 
 
+		std::string s1(managedDLL);
+		s1 = s1.substr(0, s1.find_last_of("\\/"));
+		auto appPath = s1.c_str();
 
+		char appPath2[256];
+		strcpy_s(appPath2, appPath);
 
-
-		const char* property_keys[] = { "APP_PATHS"/*, "TRUSTED_PLATFORM_ASSEMBLIES"*/ };
+		//todo: prob can pass app path and not need to copy dependant files 
+		const char* property_keys[] = { "APP_PATHS","APP_CONTEXT_BASE_DIRECTORY"/*, "TRUSTED_PLATFORM_ASSEMBLIES"*/};
 		const char* property_values[] = {// APP_PATHS
 										 clrDirectoryPath,
+										 appPath2
 										 // TRUSTED_PLATFORM_ASSEMBLIES
 										// tpa_list.c_str() 
 		};
@@ -88,7 +94,8 @@ namespace
 		std::cout << "[Aero C++] Bootstrap Success, coreclr loaded!\n";
 		return  ::GetModuleHandle(L"coreclr.dll");
 	}
-	ICLRRuntimeHost* GetNETCoreCLRRuntimeHost(char clrDirectoryPath[])
+
+	ICLRRuntimeHost* GetNETCoreCLRRuntimeHost(char clrDirectoryPath[], char managedDLL[])
 	{
 		HMODULE coreCLRModule = ::GetModuleHandle(L"coreclr.dll");
 
@@ -96,7 +103,7 @@ namespace
 		{
 			std::cout << "[Aero C++] Could not find coreclr. Attempting to bootstrap...\n";
 			//not currently loaded in this process so we need to start an instance
-			coreCLRModule = InjectCoreCLR(clrDirectoryPath);
+			coreCLRModule = InjectCoreCLR(clrDirectoryPath, managedDLL);
 			if (!coreCLRModule)
 			{
 				//failed to start instance of .net core
@@ -137,7 +144,7 @@ namespace
 
 		//Access Violation Exception? Sucks to suck..
 		//jk fix is usually making sure both this and the injectee is 64 bit and likely the app.
-		ICLRRuntimeHost* pClrRuntimeHost = GetNETCoreCLRRuntimeHost(const_cast<char*>(clrDirectoryPath.c_str()));
+		ICLRRuntimeHost* pClrRuntimeHost = GetNETCoreCLRRuntimeHost(const_cast<char*>(clrDirectoryPath.c_str()), const_cast<char*>(managedDll.c_str()));
 
 
 		DWORD dwRet = 0;

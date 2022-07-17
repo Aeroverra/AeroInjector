@@ -13,6 +13,7 @@ namespace Tech.Aerove.AeroInjector.Injection
 {
     public class Injector
     {
+        public DirectoryInfo RunningDirectory { get; private set; }
         public readonly int ProcessId;
         public readonly string DllInjecteePath;
         public readonly string? ManagedNamespace;
@@ -36,14 +37,15 @@ namespace Tech.Aerove.AeroInjector.Injection
             }
 
             //copy InjecteeCPP to temp folder
-            var tempDir = FileUtils.GetTempDirectory();
-            var injecteeCPP = FileUtils.CopyInjecteeCPP(tempDir);
-            FileUtils.WriteManagedArgs(tempDir, AssemblyFramework, DllInjecteePath, ManagedNamespace, ManagedMethod, args);
+            RunningDirectory = FileUtils.GetTempDirectory();
+            var injecteeCPP = FileUtils.CopyInjecteeCPP(RunningDirectory);
+            FileUtils.WriteManagedArgs(RunningDirectory, AssemblyFramework, DllInjecteePath, ManagedNamespace, ManagedMethod, args);
             if (AssemblyFramework == AssemblyFramework.NetCore)
             {
-                FileUtils.CopyNetCore(tempDir);
+                FileUtils.CopyNetCore(RunningDirectory);
+                FileUtils.CopyInjecteeFiles(DllInjecteePath,RunningDirectory);
             }
-           return InjectDLL(injecteeCPP);
+            return InjectDLL(injecteeCPP);
         }
         private bool InjectDLL(string dllInjecteePath)
         {
@@ -96,6 +98,7 @@ namespace Tech.Aerove.AeroInjector.Injection
                 var errorCode = Marshal.GetLastWin32Error();
                 return false;
             }
+            
             return true;
 
         }

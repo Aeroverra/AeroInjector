@@ -41,7 +41,11 @@ namespace Tech.Aerove.AeroInjector.Scripting.Commands
                 },
                 EnableRaisingEvents = true
             };
-            process.Start();
+            process.Exited += delegate
+            {
+                process.Dispose();
+            };
+                process.Start();
             Variables["processid"] = $"{process.Id}";
         }
       
