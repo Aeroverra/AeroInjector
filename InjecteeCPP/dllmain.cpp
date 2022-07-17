@@ -20,11 +20,11 @@ std::string ManagedArgs;
 DWORD WINAPI Main(LPVOID lpParam)
 {
 	//sleep(10);//uncomment for time to turn on debugger after manual injection
-	AllocConsole(); //opens console
-	FILE* fp;
-	freopen_s(&fp, "CONOUT$", "w", stdout);
-	std::cout.clear();
-	printf("[Aero C++] Console Opened!\r\n");
+	//AllocConsole(); //opens console
+	//FILE* fp;
+	//freopen_s(&fp, "CONOUT$", "w", stdout);
+	//std::cout.clear();
+	//printf("[Aero C++] Console Opened!\r\n");
 
 
 	bool UseCore = AssemblyFramework == "NetCore";

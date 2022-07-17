@@ -1,6 +1,8 @@
-﻿using System;
+﻿using LibPublic.NamedPipes;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO.Pipes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,17 +39,56 @@ namespace Tech.Aerove.AeroInjector.Scripting.Commands
                     Arguments = args,
                     FileName = exePath,
                     WorkingDirectory = new FileInfo(exePath).Directory.FullName,
-                    
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false
                 },
-                EnableRaisingEvents = true
+                EnableRaisingEvents = true,
+
+            };
+            process.Start();
+            var host = new NamedPipeHost($"Aero{process.Id}");
+            Console.WriteLine($"[Gui] Aero{process.Id}");
+            process.OutputDataReceived += (object sender, DataReceivedEventArgs e) =>
+            {
+                var tHost = host;
+                tHost.WriteLine(e.Data);
+                //if (e.Data.Contains("Injectee"))
+                //{
+                    Console.WriteLine($"[{process.ProcessName}] {e.Data}");
+                //}
+            };
+            process.ErrorDataReceived += (object sender, DataReceivedEventArgs e) =>
+            {
+                var tHost = host;
+                tHost.WriteLine(e.Data);
+                //if (e.Data.Contains("Injectee"))
+                //{
+                    Console.WriteLine($"[{process.ProcessName}] {e.Data}");
+                //}
             };
             process.Exited += delegate
             {
                 process.Dispose();
             };
-                process.Start();
+            host.Start();
+            process.BeginErrorReadLine();
+            process.BeginOutputReadLine();
+            Console.WriteLine(process.Id);
             Variables["processid"] = $"{process.Id}";
+            //var tt = new Thread(() =>
+            //{
+            //    while (true)
+            //    {
+            //        var tHost = host;
+            //        var g = Guid.NewGuid();
+            //        Console.WriteLine($"[Gui] {g}");
+            //        tHost.WriteLine($"{g}");
+            //        Thread.Sleep(5000);
+            //    }
+            //});
+            //tt.Start();
         }
-      
+
     }
 }
