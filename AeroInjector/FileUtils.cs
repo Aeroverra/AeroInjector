@@ -53,7 +53,23 @@ namespace Tech.Aerove.AeroInjector
             //File.Copy(zipSource, zipDest);
             ZipFile.ExtractToDirectory(zipSource, destination.FullName);
         }
+     
+        /// <summary>
+        /// Copies all other files in the same folder of the injectee.
+        /// This is likely needed if it has dependants.
+        /// </summary>
+        /// <param name="destination"></param>
+        public static void CopyInjecteeFiles(string managedDLLFilePath, DirectoryInfo destination)
+        {
+            var file = new FileInfo(managedDLLFilePath);
+            var dir = file.Directory;
+            foreach (var f in dir.GetFiles())
+            {
+                f.CopyTo(Path.Combine(destination.FullName, f.Name), true);
+            }
 
+        }
+       
         /// <summary>
         /// writes text file to directory with arguments for Injectee.cpp to read and pass to the 
         /// managed runtime
