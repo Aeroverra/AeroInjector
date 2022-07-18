@@ -140,7 +140,7 @@ namespace
 		std::wstring lManagedDll = std::wstring(managedDll.begin(), managedDll.end());
 		std::wstring lmanagedNamespace = std::wstring(managedNamespace.begin(), managedNamespace.end());
 		std::wstring lmanagedMethod = std::wstring(managedMethod.begin(), managedMethod.end());
-		std::wstring lmanagedArgs = std::wstring(managedMethod.begin(), managedMethod.end());
+		std::wstring lmanagedArgs = std::wstring(managedArgs.begin(), managedArgs.end());
 
 		//Access Violation Exception? Sucks to suck..
 		//jk fix is usually making sure both this and the injectee is 64 bit and likely the app.
