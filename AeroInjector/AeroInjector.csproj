@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Repos\Tech.Aerove.Lib.Public\Tech.Aerove.Lib.Public\LibPublic.csproj" />
+    <ProjectReference Include="..\..\Tech.Aerove.Lib.Public\Lib.Public\LibPublic.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -37,13 +37,13 @@ namespace CoreInjectee
         }
         public static void ReflectionOutput()
         {
-            File.WriteAllLines(@"C:\Users\Nicholas\Desktop\start.txt", new string[] { "tes" });
+           // File.WriteAllLines(@"youroutputpath\Desktop\start.txt", new string[] { "tes" });
             //this will crash app if its not a managed app (core / framework)
             var entrya = Assembly.GetEntryAssembly();
 
             Console.WriteLine($"<-- Assembly {entrya.FullName} -->\r\n");
             System.Reflection.Assembly asm = System.Reflection.Assembly.Load(entrya.ToString());
-            File.WriteAllLines(@"C:\Users\Nicholas\Desktop\start2.txt", asm.GetTypes().Select(x => x.Name).ToArray());
+           // File.WriteAllLines(@"youroutputpath\Desktop\start2.txt", asm.GetTypes().Select(x => x.Name).ToArray());
             foreach (Type type in asm.GetTypes())
             {
                 Console.WriteLine($"##### {type.Name} #####");
