@@ -20,34 +20,36 @@ Aeroinjector is an experimental research project I created to expand my understa
 ### Getting Started With Gui
 Once the solution is compiled and the gui is ran the first thing you will see is this.
 
-![First Screen](https://cdn.discordapp.com/attachments/521970463052922891/1081369012379848826/image.png)
+![First Screen](https://github.com/user-attachments/assets/8792e3ec-67ca-4fdd-a4bb-06cafa92b6cb)
+
 
 We are first going to demonstrate .Net injection so to do that Its easiest to create a new .net core (Version 6) console app which just loops the same text forever. Here is what it should look like.
 
-![basic console app](https://cdn.discordapp.com/attachments/521970463052922891/1081370899925708952/image.png)
+![basic console app](https://github.com/user-attachments/assets/f62c3a6d-3922-4aca-a0a3-7a650bcf4515)
 
 Next go back to the gui and in the second tab add our compiled console app exe as an application. 
 
-![Application](https://cdn.discordapp.com/attachments/521970463052922891/1081371286619574393/image.png)
+![Application](https://github.com/user-attachments/assets/c72ddea2-8f43-4b92-868f-b392b26922ad)
 
 We can now go to the third tab and inject the InjecteeCore Example dll provided.
 
-![DLL To Inject](https://media.discordapp.net/attachments/521970463052922891/1081372274508185670/image.png?width=1674&height=882)
+![DLL To Inject](https://github.com/user-attachments/assets/77b1176f-4cf7-40ae-97d2-13663b156d50)
 
 The next step is telling the application what to do with these. The 4th tab provides a very basic custom script setup. Click on the script drop down and select "New Script"
 
-![Injector](https://cdn.discordapp.com/attachments/521970463052922891/1081372936398721144/image.png)
+![Injector](https://github.com/user-attachments/assets/d8ef95d1-3f01-445a-854e-d46c0c877773)
 
 Name the script and add a command. The left side allows adding and editing known commands or parameters while the right side allows easy text editing of these commands. 
 
-![Example](https://cdn.discordapp.com/attachments/521970463052922891/1081375092656844901/image.png)
+![Example](https://github.com/user-attachments/assets/26de166f-1c67-4495-a7c6-35f7e5e3aa54)
 
 
 It is important that our Inject command have the right namespace and method name. "MyMethod" refers to the actual name of the method within the provided injectee example. 
 NameSpace: CoreInjectee.InjecteeStart
 Method: MyMethod
 
-![Inject command](https://cdn.discordapp.com/attachments/521970463052922891/1081379833377988688/image.png)
+![Inject command](https://github.com/user-attachments/assets/f00d44f0-01bc-4598-9caf-ce5ffb56d555)
+
 Once all 3 parameters are set up to Launch, Sleep and Inject, your right side script should look like this.
 
     [LaunchApp] {Path:TestConsoleAppPathHere}
@@ -61,7 +63,7 @@ Make sure you can see the console of the gui as this is where the output for our
 
 The result should look like this
 
-![injection result](https://cdn.discordapp.com/attachments/521970463052922891/1081381881888641034/image.png)
+![injection result](https://github.com/user-attachments/assets/c492bd43-97dd-45a6-be15-4a1a9a0e8665)
 
 To demonstrate the flexibility, lets inject a .Net Core DLL into a Native C/C++ DLL.
 Here is a script to demonstrate launching the remote desktop client and injecting the same C# dll. Modify it as needed
@@ -73,11 +75,11 @@ Here is a script to demonstrate launching the remote desktop client and injectin
 
 The result will look like this
 
-![Native example](https://cdn.discordapp.com/attachments/521970463052922891/1081395401908826203/image.png)
+![Native example](https://github.com/user-attachments/assets/f8665687-cc42-41ba-af31-142a4a9e5ff9)
 
 Don't believe that its actually injecting C# into the native DLL? Verify it by opening [Process Explorer](https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer) as administrator . Select the rdp client with the bottom pane activated (CTRL + L) and there you will see the .Net Core DLL we injected. Before injection it is moved to a temporary folder for development purposes so the path will not line up.
 
-![enter image description here](https://cdn.discordapp.com/attachments/521970463052922891/1081396191780155503/image.png)
+![enter image description here](https://github.com/user-attachments/assets/7bdde93b-40dd-41c7-96d4-da7e0b4d0ed1)
 
 #### How Does it work?
 The Gui tells our main application ["AeroInjector"](https://github.com/Aeroverra/AeroInjector) to inject a our dll. AeroInjector (C#)  detects the framework of the dll you want to inject. It then uses the Marshal Interop Service to allocate memory space within our running target application and uses remote thread execution to inject and run the provided "InjecteeCPP.dll" passing along the framework type of your dll.  Now that our native dll is within the running applications namespace it will check whether the .Net CLR is present. If not it will handle bootstrapping the .Net CLR into the running application and finally Inject and load your provided DLL. 
@@ -91,11 +93,11 @@ The biggest reason is the same reason people use C# in a lot of major enterprise
 #### How do I dump methods from a C# managed application?
 Simply using reflection ofcourse! Within the provided CoreInjectee project you can uncomment the ReflectionOutput Method. Don't forget to compile.
 
-![reflection output comment](https://cdn.discordapp.com/attachments/521970463052922891/1081409381104627762/image.png)
+![reflection output comment](https://github.com/user-attachments/assets/0b795810-8cf0-4046-aa72-4df15d282503)
 
 The result will look like this showing all the methods, parameters and more. Very useful for modifying closed source software lacking that one tiny feature you want. 
 
-![reflection result](https://cdn.discordapp.com/attachments/521970463052922891/1081409692804337725/image.png)
+![reflection result](https://github.com/user-attachments/assets/02dbb8da-715f-4fa4-ab93-2490ce170a41)
 
 #### Known Limitations
  - Mixing .Net Core and .Net Framework may not work in all cases
