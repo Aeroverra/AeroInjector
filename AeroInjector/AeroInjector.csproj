@@ -23,10 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Tech.Aerove.Lib.Public\Lib.Public\LibPublic.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="NetCore6.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

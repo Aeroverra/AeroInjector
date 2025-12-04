@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.3.32611.2
+# Visual Studio Version 18
+VisualStudioVersion = 18.3.11222.16 d18.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AeroInjector", "AeroInjector\AeroInjector.csproj", "{5F98FCA3-BE96-4FD9-B3EB-226A6E02CB2F}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -19,8 +19,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreInjectee", "Examples\CoreInjectee\CoreInjectee.csproj", "{9614DC3B-9F50-4E15-AA90-48BA6B634A84}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameworkInjectee", "Examples\FrameworkInjectee\FrameworkInjectee.csproj", "{1ADD6485-79FC-44CA-B4AC-7870A286D357}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibPublic", "..\Tech.Aerove.Lib.Public\Lib.Public\LibPublic.csproj", "{1C63F80D-F7BB-4AA8-AE77-292B7C06680C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -92,18 +90,6 @@ Global
 		{1ADD6485-79FC-44CA-B4AC-7870A286D357}.Release|x64.Build.0 = Release|Any CPU
 		{1ADD6485-79FC-44CA-B4AC-7870A286D357}.Release|x86.ActiveCfg = Release|Any CPU
 		{1ADD6485-79FC-44CA-B4AC-7870A286D357}.Release|x86.Build.0 = Release|Any CPU
-		{1C63F80D-F7BB-4AA8-AE77-292B7C06680C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1C63F80D-F7BB-4AA8-AE77-292B7C06680C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1C63F80D-F7BB-4AA8-AE77-292B7C06680C}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{1C63F80D-F7BB-4AA8-AE77-292B7C06680C}.Debug|x64.Build.0 = Debug|Any CPU
-		{1C63F80D-F7BB-4AA8-AE77-292B7C06680C}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{1C63F80D-F7BB-4AA8-AE77-292B7C06680C}.Debug|x86.Build.0 = Debug|Any CPU
-		{1C63F80D-F7BB-4AA8-AE77-292B7C06680C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1C63F80D-F7BB-4AA8-AE77-292B7C06680C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1C63F80D-F7BB-4AA8-AE77-292B7C06680C}.Release|x64.ActiveCfg = Release|Any CPU
-		{1C63F80D-F7BB-4AA8-AE77-292B7C06680C}.Release|x64.Build.0 = Release|Any CPU
-		{1C63F80D-F7BB-4AA8-AE77-292B7C06680C}.Release|x86.ActiveCfg = Release|Any CPU
-		{1C63F80D-F7BB-4AA8-AE77-292B7C06680C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -112,7 +98,6 @@ Global
 		{6B7B9F59-13EA-4923-B44D-5E9755AA391C} = {FD11E006-7856-42B8-B710-622167D00B83}
 		{9614DC3B-9F50-4E15-AA90-48BA6B634A84} = {406AA9E6-5C63-499A-B703-476F5C89D543}
 		{1ADD6485-79FC-44CA-B4AC-7870A286D357} = {406AA9E6-5C63-499A-B703-476F5C89D543}
-		{1C63F80D-F7BB-4AA8-AE77-292B7C06680C} = {FD11E006-7856-42B8-B710-622167D00B83}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0370DF81-51C5-4EF5-94ED-74B2C525EC52}

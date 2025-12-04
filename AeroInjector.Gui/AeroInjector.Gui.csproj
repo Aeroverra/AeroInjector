@@ -7,6 +7,7 @@
     <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Tech.Aerove.AeroInjector.Gui</RootNamespace>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
@@ -102,7 +103,6 @@
     <FrameworkReference Include="Microsoft.WindowsDesktop.App.WindowsForms" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Tech.Aerove.Lib.Public\Lib.Public\LibPublic.csproj" />
     <ProjectReference Include="..\AeroInjector\AeroInjector.csproj" />
   </ItemGroup>
 </Project>

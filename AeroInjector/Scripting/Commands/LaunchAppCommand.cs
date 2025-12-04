@@ -1,11 +1,5 @@
-﻿using LibPublic.NamedPipes;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO.Pipes;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
+using Tech.Aerove.AeroInjector.NamedPipes;
 using Tech.Aerove.AeroInjector.Scripting.Attribute;
 
 namespace Tech.Aerove.AeroInjector.Scripting.Commands
@@ -55,7 +49,7 @@ namespace Tech.Aerove.AeroInjector.Scripting.Commands
                 tHost.WriteLine(e.Data);
                 //if (e.Data.Contains("Injectee"))
                 //{
-                    Console.WriteLine($"[{process.ProcessName}] {e.Data}");
+                Console.WriteLine($"[{process.ProcessName}] {e.Data}");
                 //}
             };
             process.ErrorDataReceived += (object sender, DataReceivedEventArgs e) =>
@@ -64,7 +58,7 @@ namespace Tech.Aerove.AeroInjector.Scripting.Commands
                 tHost.WriteLine(e.Data);
                 //if (e.Data.Contains("Injectee"))
                 //{
-                    Console.WriteLine($"[{process.ProcessName}] {e.Data}");
+                Console.WriteLine($"[{process.ProcessName}] {e.Data}");
                 //}
             };
             process.Exited += delegate

@@ -1,24 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
-using System.Net.Http;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Components.Forms;
-using Microsoft.AspNetCore.Components.Routing;
-using Microsoft.AspNetCore.Components.Web;
-using Microsoft.AspNetCore.Components.Web.Virtualization;
-using Microsoft.JSInterop;
-using Tech.Aerove.AeroInjector.Gui;
-using Tech.Aerove.AeroInjector.Gui.Shared;
-using Tech.Aerove.AeroInjector.Gui.Services;
-using Tech.Aerove.AeroInjector.Gui.Models;
-using Tech.Aerove.AeroInjector.Scripting.Commands;
-using Tech.Aerove.Lib.Public.WindowsNative;
 using System.Reflection;
+using Tech.Aerove.AeroInjector.Gui.Models;
+using Tech.Aerove.AeroInjector.Gui.Services;
+using Tech.Aerove.AeroInjector.Gui.WindowsNative;
 using Tech.Aerove.AeroInjector.Scripting.Attribute;
+using Tech.Aerove.AeroInjector.Scripting.Commands;
 
 namespace Tech.Aerove.AeroInjector.Gui.Pages
 {
