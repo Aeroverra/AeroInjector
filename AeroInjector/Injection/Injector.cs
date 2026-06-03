@@ -39,12 +39,27 @@ namespace Tech.Aerove.AeroInjector.Injection
             //copy InjecteeCPP to temp folder
             RunningDirectory = FileUtils.GetTempDirectory();
             var injecteeCPP = FileUtils.CopyInjecteeCPP(RunningDirectory);
-            FileUtils.WriteManagedArgs(RunningDirectory, AssemblyFramework, DllInjecteePath, ManagedNamespace, ManagedMethod, args);
+
+            // Copy all files from the injectee's directory to the temp folder so that
+            // dependent assemblies (e.g. 0Harmony.dll) are available alongside the DLL.
+            FileUtils.CopyInjecteeFiles(DllInjecteePath, RunningDirectory);
+
             if (AssemblyFramework == AssemblyFramework.NetCore)
             {
                 FileUtils.CopyNetCore(RunningDirectory);
-                FileUtils.CopyInjecteeFiles(DllInjecteePath,RunningDirectory);
+                // For NetCore the original path is used together with APP_CONTEXT_BASE_DIRECTORY.
+                FileUtils.WriteManagedArgs(RunningDirectory, AssemblyFramework, DllInjecteePath, ManagedNamespace, ManagedMethod, args);
             }
+            else
+            {
+                // For NetFramework, ExecuteInDefaultAppDomain uses LoadFrom semantics which probe
+                // the assembly's own directory for dependencies.  Point it at the temp-dir copy so
+                // that all dependency DLLs (already copied there above) are found automatically,
+                // removing the need to inject each dependency separately.
+                var tempDllPath = Path.Combine(RunningDirectory.FullName, Path.GetFileName(DllInjecteePath));
+                FileUtils.WriteManagedArgs(RunningDirectory, AssemblyFramework, tempDllPath, ManagedNamespace, ManagedMethod, args);
+            }
+
             return InjectDLL(injecteeCPP);
         }
         private bool InjectDLL(string dllInjecteePath)
